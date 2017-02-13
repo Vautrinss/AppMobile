@@ -15,6 +15,7 @@
 		3A53C9851E51B5170039A34E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A53C9831E51B5170039A34E /* LaunchScreen.storyboard */; };
 		3A53C9901E51B5170039A34E /* IOS_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53C98F1E51B5170039A34E /* IOS_ProjectTests.swift */; };
 		3A53C99B1E51B5170039A34E /* IOS_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53C99A1E51B5170039A34E /* IOS_ProjectUITests.swift */; };
+		3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3A53C9961E51B5170039A34E /* IOS ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IOS ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A53C99A1E51B5170039A34E /* IOS_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_ProjectUITests.swift; sourceTree = "<group>"; };
 		3A53C99C1E51B5170039A34E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActuViewCellTableViewCell.swift; path = ../ActuViewCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				3A53C9771E51B5170039A34E /* AppDelegate.swift */,
 				3A53C9791E51B5170039A34E /* ViewController.swift */,
 				3A53C97B1E51B5170039A34E /* Main.storyboard */,
+				3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */,
 				3A53C9811E51B5170039A34E /* Assets.xcassets */,
 				3A53C9831E51B5170039A34E /* LaunchScreen.storyboard */,
 				3A53C9861E51B5170039A34E /* Info.plist */,
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A53C97A1E51B5170039A34E /* ViewController.swift in Sources */,
+				3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */,
 				3A53C9781E51B5170039A34E /* AppDelegate.swift in Sources */,
 				3A53C9801E51B5170039A34E /* IOS_Project.xcdatamodeld in Sources */,
 			);
@@ -518,6 +522,7 @@
 				3A53C9A11E51B5170039A34E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A53C9A21E51B5170039A34E /* Build configuration list for PBXNativeTarget "IOS ProjectTests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +531,7 @@
 				3A53C9A41E51B5170039A34E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A53C9A51E51B5170039A34E /* Build configuration list for PBXNativeTarget "IOS ProjectUITests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +540,7 @@
 				3A53C9A71E51B5170039A34E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
