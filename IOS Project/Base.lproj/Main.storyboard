@@ -50,7 +50,7 @@
                                 </constraints>
                                 <state key="normal" title="Connexion"/>
                                 <connections>
-                                    <segue destination="EuT-pg-zSO" kind="show" id="iiA-9T-mfH"/>
+                                    <action selector="connexion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="T6y-ti-B8g"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -66,15 +66,18 @@
                             <constraint firstItem="heC-Pa-tqd" firstAttribute="top" secondItem="T91-T1-qbg" secondAttribute="bottom" constant="8" id="zFw-up-Exm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="EuT-pg-zSO" kind="presentation" identifier="connexion" id="bH0-P8-yqx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-68" y="17.541229385307346"/>
         </scene>
-        <!--View Controller-->
+        <!--Fil Actu View-->
         <scene sceneID="Dxq-rl-RoY">
             <objects>
-                <viewController id="EuT-pg-zSO" customClass="ViewController" customModule="IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="EuT-pg-zSO" customClass="FilActuView" customModule="IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M75-ur-nPf"/>
                         <viewControllerLayoutGuide type="bottom" id="1P7-IM-YvV"/>
@@ -84,7 +87,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="spc-ij-hJn">
-                                <rect key="frame" x="16" y="20" width="288" height="64"/>
+                                <rect key="frame" x="16" y="20" width="240" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="15b-jr-2nD"/>
@@ -134,25 +137,38 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjm-Sw-d91">
+                                <rect key="frame" x="259" y="20" width="45" height="64"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="envoyer"/>
+                                <connections>
+                                    <action selector="envoyer:" destination="EuT-pg-zSO" eventType="touchUpInside" id="Ygj-Qf-7yW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="spc-ij-hJn" firstAttribute="top" secondItem="M75-ur-nPf" secondAttribute="bottom" id="3bE-9p-Iic"/>
-                            <constraint firstAttribute="trailing" secondItem="spc-ij-hJn" secondAttribute="trailing" constant="16" id="Nfn-TO-Agd"/>
+                            <constraint firstItem="mjm-Sw-d91" firstAttribute="leading" secondItem="spc-ij-hJn" secondAttribute="trailing" constant="3" id="FpL-Kv-b3B"/>
+                            <constraint firstItem="mjm-Sw-d91" firstAttribute="trailing" secondItem="QMY-Ya-1IR" secondAttribute="trailingMargin" id="X3S-O2-RkK"/>
+                            <constraint firstItem="mjm-Sw-d91" firstAttribute="top" secondItem="M75-ur-nPf" secondAttribute="bottom" id="aNH-JT-OTC"/>
                             <constraint firstItem="spc-ij-hJn" firstAttribute="leading" secondItem="QMY-Ya-1IR" secondAttribute="leading" constant="16" id="bJ4-9L-nng"/>
                             <constraint firstAttribute="trailing" secondItem="TqI-Wd-gs5" secondAttribute="trailing" constant="16" id="dGM-rg-7px"/>
                             <constraint firstItem="TqI-Wd-gs5" firstAttribute="leading" secondItem="QMY-Ya-1IR" secondAttribute="leading" constant="16" id="ikz-fG-SJo"/>
+                            <constraint firstItem="TqI-Wd-gs5" firstAttribute="top" secondItem="mjm-Sw-d91" secondAttribute="bottom" constant="8" id="wXa-1b-p1J"/>
                             <constraint firstItem="1P7-IM-YvV" firstAttribute="top" secondItem="TqI-Wd-gs5" secondAttribute="bottom" constant="8" id="xyt-Ds-mJf"/>
                             <constraint firstItem="TqI-Wd-gs5" firstAttribute="top" secondItem="spc-ij-hJn" secondAttribute="bottom" constant="8" id="yRu-aQ-JgJ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actuTable" destination="TqI-Wd-gs5" id="b2a-wh-Kto"/>
+                        <outlet property="envoyer" destination="mjm-Sw-d91" id="D66-nc-YZT"/>
+                        <outlet property="newMessage" destination="spc-ij-hJn" id="b9g-qK-dvi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fno-KE-wIw" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="783" y="16"/>
+            <point key="canvasLocation" x="781.875" y="15"/>
         </scene>
     </scenes>
 </document>

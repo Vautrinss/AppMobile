@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    @IBOutlet weak var actuTable: UITableView!
-    var actus : [String] = ["REunion", "Election", "Partiel"]
+class ViewController: UIViewController {
     
-    
+    @IBAction func connexion(_ sender: Any) {
+        self.performSegue(withIdentifier: "connexion", sender: self)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -23,16 +24,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
-            as! ActuViewCellTableViewCell
-        cell.ObjetActu.text = self.actus[indexPath.row]
-        return cell
+       func alertError(errorMsg error : String, userInfo user: String = "")
+    {
+        let alert = UIAlertController(title: error, message: user, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.actus.count
-    }
-
-
+    
 }
 
