@@ -9,16 +9,32 @@
 import UIKit
 import CoreData
 
-class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
    @IBOutlet weak var actuTable: UITableView!
-    var actus : [String] = []
+    var actus : [Message] = []
     
     @IBOutlet weak var newMessage: UITextView!
     
+    fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
+        let request : NSFetchRequest<Message> = Message.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
+        let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
+        fetchResultController.delegate = self
+        return fetchResultController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        do{
+            //try self.actus = context.fetch(request)
+            try self.messagesFetched.performFetch()
+            
+        }
+        catch let error as NSError{
+            self.alertError(errorMsg: "\(error)", userInfo: "\(error.userInfo)")
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,14 +42,23 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate 
         // Dispose of any resources that can be recreated.
     }
     
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
             as! ActuViewCellTableViewCell
-        cell.ObjetActu.text = self.actus[indexPath.row]
+        let message = self.messagesFetched.object(at: indexPath)
+        cell.ObjetActu.text = message.objetM
+        cell.ContenuActu.text = message.contenuM
         return cell
     }
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.actus.count
+        guard let section = self.messagesFetched.sections?[section] else {
+            fatalError("Arrrgh")
+        }
+        return section.numberOfObjects
     }
     
     func alertError(errorMsg error : String, userInfo user: String = "")
@@ -46,7 +71,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate 
     
     
     @IBAction func envoyer(_ sender: Any) {
-        if self.newMessage.text != nil{
+        if self.newMessage.text != ""{
             addActu(contenuActu: self.newMessage.text)
         }
     }
@@ -67,7 +92,6 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate 
         
         do{
             try context.save()
-            //self.message.append(message)
         }
         catch let error as NSError{
             self.alertError(errorMsg: "\(error)", userInfo: "\(error.userInfo)")

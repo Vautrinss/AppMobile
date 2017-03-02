@@ -15,6 +15,8 @@
 		3A53C9851E51B5170039A34E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A53C9831E51B5170039A34E /* LaunchScreen.storyboard */; };
 		3A53C9901E51B5170039A34E /* IOS_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53C98F1E51B5170039A34E /* IOS_ProjectTests.swift */; };
 		3A53C99B1E51B5170039A34E /* IOS_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A53C99A1E51B5170039A34E /* IOS_ProjectUITests.swift */; };
+		3A7EFECC1E68349F00400A31 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EFECB1E68349F00400A31 /* CoreDataManager.swift */; };
+		3A7EFECE1E6836D400400A31 /* DialogBoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EFECD1E6836D400400A31 /* DialogBoxHelper.swift */; };
 		3A89E4121E530CCB00E91F94 /* FilActuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A89E4111E530CCB00E91F94 /* FilActuView.swift */; };
 		3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +53,8 @@
 		3A53C9961E51B5170039A34E /* IOS ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IOS ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A53C99A1E51B5170039A34E /* IOS_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOS_ProjectUITests.swift; sourceTree = "<group>"; };
 		3A53C99C1E51B5170039A34E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A7EFECB1E68349F00400A31 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = "IOS Project/CoreDataManager.swift"; sourceTree = "<group>"; };
+		3A7EFECD1E6836D400400A31 /* DialogBoxHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogBoxHelper.swift; sourceTree = "<group>"; };
 		3A89E4111E530CCB00E91F94 /* FilActuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilActuView.swift; sourceTree = "<group>"; };
 		3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActuViewCellTableViewCell.swift; path = ../ActuViewCellTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +87,7 @@
 		3A53C96B1E51B5160039A34E = {
 			isa = PBXGroup;
 			children = (
+				3A7EFECF1E6836DC00400A31 /* Class Helpers */,
 				3A53C9761E51B5170039A34E /* IOS Project */,
 				3A53C98E1E51B5170039A34E /* IOS ProjectTests */,
 				3A53C9991E51B5170039A34E /* IOS ProjectUITests */,
@@ -132,6 +137,15 @@
 				3A53C99C1E51B5170039A34E /* Info.plist */,
 			);
 			path = "IOS ProjectUITests";
+			sourceTree = "<group>";
+		};
+		3A7EFECF1E6836DC00400A31 /* Class Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				3A7EFECB1E68349F00400A31 /* CoreDataManager.swift */,
+				3A7EFECD1E6836D400400A31 /* DialogBoxHelper.swift */,
+			);
+			name = "Class Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,10 +285,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7EFECC1E68349F00400A31 /* CoreDataManager.swift in Sources */,
 				3A89E4121E530CCB00E91F94 /* FilActuView.swift in Sources */,
 				3A53C97A1E51B5170039A34E /* ViewController.swift in Sources */,
 				3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */,
 				3A53C9781E51B5170039A34E /* AppDelegate.swift in Sources */,
+				3A7EFECE1E6836D400400A31 /* DialogBoxHelper.swift in Sources */,
 				3A53C9801E51B5170039A34E /* IOS_Project.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
