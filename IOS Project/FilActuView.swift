@@ -11,7 +11,9 @@ import CoreData
 
 class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
    @IBOutlet weak var actuTable: UITableView!
-    var actus : [Message] = []
+    
+    
+    
     
     @IBOutlet weak var newMessage: UITextView!
     
@@ -48,8 +50,10 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
             as! ActuViewCellTableViewCell
         let message = self.messagesFetched.object(at: indexPath)
+        //self.messagePresenter.configure(theCell: cell, forMessage: message)
         cell.ObjetActu.text = message.objetM
         cell.ContenuActu.text = message.contenuM
+        //cell.accessoryType = .detailButton
         return cell
     }
     
@@ -60,6 +64,60 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         }
         return section.numberOfObjects
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+   /* func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if(editingStyle==UITableViewCellEditingStyle.delete){
+            self.actuTable.beginUpdates()
+            if self.delete(actuWithIndex: indexPath.row){
+                self.actuTable.deleteRows(at: <#T##[IndexPath]#>, with: UITableViewRowAnimation.automatic)
+            }
+            self.actuTable.endUpdates()
+    }
+        
+       */
+        func getContext(errorMsg: String, userInfoMsg: String = "error") -> NSManagedObjectContext?{
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                //self.alert(WithTitle: errorMsg, andMessage: UserInfoMsg)
+                return nil
+            }
+            return appDelegate.persistentContainer.viewContext
+        }
+    
+    func alert(WithTitle title: String, andMessage msg: String = "") {
+        let alert = UIAlertController(title: title,
+                                      message: ms,
+                                      preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Ok",
+                                         style: .default)
+        alert.addAction(cancelAction)
+        present(alert,animated: true)
+    }
+    
+/*
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>){
+        self.actuTable.beginUpdates()
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>){
+        self.actuTable.endUpdates()
+        CoreDataManager.save()
+    }
+    func controller(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?){
+        switch type{
+        case.delete:
+            if let indexPath = indexPath{
+                self.actuTable.deleteRows(at: <#T##[IndexPath]#>, with: .automatic)
+            }
+        default:
+            break
+        }
+    }
+    
+    */
+    
     
     func alertError(errorMsg error : String, userInfo user: String = "")
     {
@@ -77,10 +135,11 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
     
+    
     func addActu(contenuActu contenu: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
         {
-            self.alertError(errorMsg: "Impossible de poster un message", userInfo: "Impossible de poster un message")
+           self.alertError(errorMsg: "Impossible de poster un message", userInfo: "Impossible de poster un message")
             return
         }
         let context = appDelegate.persistentContainer.viewContext
@@ -97,7 +156,23 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             self.alertError(errorMsg: "\(error)", userInfo: "\(error.userInfo)")
             return
         }
+        
     }
+    /*
+        func delete(personWithIndex indexPath: IndexPath) -> Bool{
+            guard let context = self.getContext(errorMsg: "Impossible de supprimer un message") else { return false }
+            let message = self.messagesFetched.object(at: indexPath)
+            context.delete(message)
+            do{
+                try context.save()
+                //message.remove(at: index)
+                return true
+            }
+            catch let error as NSError{
+                self.alert(error: error)
+                return false
+            }
+        }*/
     
 }
 
