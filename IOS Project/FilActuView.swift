@@ -96,26 +96,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         present(alert,animated: true)
     }
     
-/*
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>){
-        self.actuTable.beginUpdates()
-    }
-    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>){
-        self.actuTable.endUpdates()
-        CoreDataManager.save()
-    }
-    func controller(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?){
-        switch type{
-        case.delete:
-            if let indexPath = indexPath{
-                self.actuTable.deleteRows(at: <#T##[IndexPath]#>, with: .automatic)
-            }
-        default:
-            break
-        }
-    }
-    
-    */
+
     
     
     func alertError(errorMsg error : String, userInfo user: String = "")
@@ -158,5 +139,28 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             if MessageSet.deleteMessage(message: message) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible d'ajouter une actualité", andMessage: "")}
 
         }
+    
+    
+    /*
+     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>){
+     self.actuTable.beginUpdates()
+     }
+     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>){
+     self.actuTable.endUpdates()
+     CoreDataManager.save()
+     }
+     func controller(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?){
+     switch type{
+     case.delete:
+     if let indexPath = indexPath{
+     self.actuTable.deleteRows(at: <#T##[IndexPath]#>, with: .automatic)
+     }
+     default:
+     break
+     }
+     }
+     
+     */
+    
     
 }

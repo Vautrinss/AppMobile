@@ -19,6 +19,7 @@
 		3A7EFECE1E6836D400400A31 /* DialogBoxHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7EFECD1E6836D400400A31 /* DialogBoxHelper.swift */; };
 		3A89E4121E530CCB00E91F94 /* FilActuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A89E4111E530CCB00E91F94 /* FilActuView.swift */; };
 		3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */; };
+		A310972D1E7025A1003A789A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A310972C1E7025A1003A789A /* Session.swift */; };
 		A3F4A3901E7001A100C7D447 /* PersonneSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4A38F1E7001A100C7D447 /* PersonneSet.swift */; };
 		A3F4A3921E7002DA00C7D447 /* Personne.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4A3911E7002DA00C7D447 /* Personne.swift */; };
 		A3F4A3941E7003C200C7D447 /* MessageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4A3931E7003C200C7D447 /* MessageSet.swift */; };
@@ -60,6 +61,7 @@
 		3A7EFECD1E6836D400400A31 /* DialogBoxHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DialogBoxHelper.swift; sourceTree = "<group>"; };
 		3A89E4111E530CCB00E91F94 /* FilActuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilActuView.swift; sourceTree = "<group>"; };
 		3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActuViewCellTableViewCell.swift; path = ../ActuViewCellTableViewCell.swift; sourceTree = "<group>"; };
+		A310972C1E7025A1003A789A /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = "IOS Project/Session.swift"; sourceTree = "<group>"; };
 		A3F4A38F1E7001A100C7D447 /* PersonneSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonneSet.swift; sourceTree = "<group>"; };
 		A3F4A3911E7002DA00C7D447 /* Personne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Personne.swift; path = Assets.xcassets/Personne.swift; sourceTree = "<group>"; };
 		A3F4A3931E7003C200C7D447 /* MessageSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSet.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 		3A7EFECF1E6836DC00400A31 /* Class Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				A310972C1E7025A1003A789A /* Session.swift */,
 				3A7EFECB1E68349F00400A31 /* CoreDataManager.swift */,
 				3A7EFECD1E6836D400400A31 /* DialogBoxHelper.swift */,
 			);
@@ -309,6 +312,7 @@
 				A3F4A3941E7003C200C7D447 /* MessageSet.swift in Sources */,
 				3A53C9781E51B5170039A34E /* AppDelegate.swift in Sources */,
 				A3F4A3901E7001A100C7D447 /* PersonneSet.swift in Sources */,
+				A310972D1E7025A1003A789A /* Session.swift in Sources */,
 				3A7EFECE1E6836D400400A31 /* DialogBoxHelper.swift in Sources */,
 				A3F4A3921E7002DA00C7D447 /* Personne.swift in Sources */,
 				3A53C9801E51B5170039A34E /* IOS_Project.xcdatamodeld in Sources */,

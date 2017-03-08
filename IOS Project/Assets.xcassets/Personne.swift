@@ -18,7 +18,7 @@ extension Personne {
         let personne = Personne(context: CoreDataManager.context)
         personne.nomP = nom
         personne.prenomP = prenom
-        personne.passwordP = passwd
+        personne.password = passwd
         personne.statutP = statut
         return personne
     }
@@ -30,6 +30,19 @@ extension Personne {
         set{
             self.nomP = newValue
         }
+    }
+    
+    var password : String{
+        get{
+            return self.passwordP ?? ""
+        }
+        set{
+            self.passwordP = newValue
+        }
+    }
+    
+    func checkPasswd(passwd: String) -> Bool{
+        return self.passwordP == passwd
     }
     
 }
