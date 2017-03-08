@@ -1,0 +1,35 @@
+//
+//  File.swift
+//  IOS Project
+//
+//  Created by Leo PERNELLE on 08/03/2017.
+//  Copyright © 2017 leobaptiste. All rights reserved.
+//
+
+import Foundation
+import CoreData
+
+extension Personne {
+// Ici methode pour crypter password
+// Methode verification password (renvoi un bol)
+    
+    static func newPersonne(prenom: String, nom: String, passwd: String, statut: Int16) -> Personne{
+        
+        let personne = Personne(context: CoreDataManager.context)
+        personne.nomP = nom
+        personne.prenomP = prenom
+        personne.passwordP = passwd
+        personne.statutP = statut
+        return personne
+    }
+    
+    var nom : String{
+        get{
+            return self.nomP ?? ""
+        }
+        set{
+            self.nomP = newValue
+        }
+    }
+    
+}

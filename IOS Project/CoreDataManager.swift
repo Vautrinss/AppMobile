@@ -20,7 +20,6 @@ class CoreDataManager: NSObject {
     }()
     
     @discardableResult
-    
     class func save() -> NSError?{
     do{
         try CoreDataManager.context.save()

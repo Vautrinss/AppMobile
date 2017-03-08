@@ -69,16 +69,15 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         return true
     }
     
-   /* func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+   func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle==UITableViewCellEditingStyle.delete){
             self.actuTable.beginUpdates()
-            if self.delete(actuWithIndex: indexPath.row){
-                self.actuTable.deleteRows(at: <#T##[IndexPath]#>, with: UITableViewRowAnimation.automatic)
-            }
+            self.deleteActu(messageWithIndex: indexPath)
             self.actuTable.endUpdates()
     }
-        
-       */
+    }
+    
+    
         func getContext(errorMsg: String, userInfoMsg: String = "error") -> NSManagedObjectContext?{
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                 //self.alert(WithTitle: errorMsg, andMessage: UserInfoMsg)
@@ -89,7 +88,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     func alert(WithTitle title: String, andMessage msg: String = "") {
         let alert = UIAlertController(title: title,
-                                      message: ms,
+                                      message: msg,
                                       preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Ok",
                                          style: .default)
@@ -139,7 +138,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     func addActu(contenuActu contenu: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
         {
-           self.alertError(errorMsg: "Impossible de poster un message", userInfo: "Impossible de poster un message")
+           alertError(errorMsg: "Impossible de poster un message", userInfo: "Impossible de poster un message")
             return
         }
         let context = appDelegate.persistentContainer.viewContext
@@ -149,30 +148,15 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         message.objetM = "Bonjour"
         message.contenuM = contenu
         
-        do{
-            try context.save()
-        }
-        catch let error as NSError{
-            self.alertError(errorMsg: "\(error)", userInfo: "\(error.userInfo)")
-            return
-        }
+        if MessageSet.addMessage(message: message) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible d'ajouter une actualité", andMessage: "")}
+        
         
     }
-    /*
-        func delete(personWithIndex indexPath: IndexPath) -> Bool{
-            guard let context = self.getContext(errorMsg: "Impossible de supprimer un message") else { return false }
+    
+    func deleteActu(messageWithIndex indexPath: IndexPath){
             let message = self.messagesFetched.object(at: indexPath)
-            context.delete(message)
-            do{
-                try context.save()
-                //message.remove(at: index)
-                return true
-            }
-            catch let error as NSError{
-                self.alert(error: error)
-                return false
-            }
-        }*/
+            if MessageSet.deleteMessage(message: message) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible d'ajouter une actualité", andMessage: "")}
+
+        }
     
 }
-
