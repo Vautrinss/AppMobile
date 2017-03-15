@@ -30,6 +30,9 @@ class MessageSet {
     ///
     /// - Parameter message: <#message description#>
     /// - Returns: <#return value description#>
+    
+    
+    
     static func addMessage(message: Message) -> Bool{
         if CoreDataManager.save() == nil { // pas d'erreur
             return true

@@ -53,7 +53,7 @@ class PersonneSet {
         let request : NSFetchRequest<Personne> = Personne.fetchRequest()
         request.predicate = NSPredicate(format: "loginP == %@", login)
         do{
-            users = try request.execute()
+            users = try CoreDataManager.context.fetch(request)
             if users.count == 1{
                 if users[0].checkPasswd(passwd: passwd){
                     return users[0]
@@ -66,7 +66,8 @@ class PersonneSet {
                 return nil
             }
         }
-        catch{
+        catch let error as NSError{
+            print("erreur : \(error.userInfo["message"])")
             return nil
         }
     }

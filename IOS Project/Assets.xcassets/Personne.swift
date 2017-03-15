@@ -23,6 +23,19 @@ extension Personne {
         return personne
     }
     
+    var login : String{
+        get{
+            return self.prenom+"."+self.nom
+        }
+    }
+    var prenom : String{
+        get{
+            return self.prenomP ?? ""
+        }
+        set{
+            self.prenomP = newValue
+        }
+    }
     var nom : String{
         get{
             return self.nomP ?? ""

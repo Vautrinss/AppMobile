@@ -20,6 +20,7 @@
 		3A89E4121E530CCB00E91F94 /* FilActuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A89E4111E530CCB00E91F94 /* FilActuView.swift */; };
 		3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */; };
 		A310972D1E7025A1003A789A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A310972C1E7025A1003A789A /* Session.swift */; };
+		A3A28D2F1E7957E900F25847 /* ProfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A28D2E1E7957E900F25847 /* ProfilController.swift */; };
 		A3F4A3901E7001A100C7D447 /* PersonneSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4A38F1E7001A100C7D447 /* PersonneSet.swift */; };
 		A3F4A3921E7002DA00C7D447 /* Personne.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4A3911E7002DA00C7D447 /* Personne.swift */; };
 		A3F4A3941E7003C200C7D447 /* MessageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4A3931E7003C200C7D447 /* MessageSet.swift */; };
@@ -62,6 +63,7 @@
 		3A89E4111E530CCB00E91F94 /* FilActuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilActuView.swift; sourceTree = "<group>"; };
 		3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActuViewCellTableViewCell.swift; path = ../ActuViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		A310972C1E7025A1003A789A /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = "IOS Project/Session.swift"; sourceTree = "<group>"; };
+		A3A28D2E1E7957E900F25847 /* ProfilController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilController.swift; path = ../ProfilController.swift; sourceTree = "<group>"; };
 		A3F4A38F1E7001A100C7D447 /* PersonneSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonneSet.swift; sourceTree = "<group>"; };
 		A3F4A3911E7002DA00C7D447 /* Personne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Personne.swift; path = Assets.xcassets/Personne.swift; sourceTree = "<group>"; };
 		A3F4A3931E7003C200C7D447 /* MessageSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSet.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				3A53C9791E51B5170039A34E /* ViewController.swift */,
 				3A53C97B1E51B5170039A34E /* Main.storyboard */,
 				3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */,
+				A3A28D2E1E7957E900F25847 /* ProfilController.swift */,
 				3A53C9811E51B5170039A34E /* Assets.xcassets */,
 				3A53C9831E51B5170039A34E /* LaunchScreen.storyboard */,
 				3A53C9861E51B5170039A34E /* Info.plist */,
@@ -306,6 +309,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A7EFECC1E68349F00400A31 /* CoreDataManager.swift in Sources */,
+				A3A28D2F1E7957E900F25847 /* ProfilController.swift in Sources */,
 				3A89E4121E530CCB00E91F94 /* FilActuView.swift in Sources */,
 				3A53C97A1E51B5170039A34E /* ViewController.swift in Sources */,
 				3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */,
