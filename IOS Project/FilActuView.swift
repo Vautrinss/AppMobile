@@ -14,8 +14,10 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     
     
-    
+    @IBOutlet weak var newMessageObjet: UITextField!
     @IBOutlet weak var newMessage: UITextView!
+    
+
     
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
         let request : NSFetchRequest<Message> = Message.fetchRequest()
@@ -108,15 +110,15 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
     
-    @IBAction func envoyer(_ sender: Any) {
-        if self.newMessage.text != ""{
-            addActu(contenuActu: self.newMessage.text)
+    @IBAction func send(_ sender: Any) {
+        if (self.newMessage.text != "") && (self.newMessageObjet.text != ""){
+            self.addActu(contenuActu: self.newMessage.text, objetActu: self.newMessageObjet.text!)
         }
     }
     
     
     
-    func addActu(contenuActu contenu: String) {
+    func addActu(contenuActu contenu: String, objetActu objet: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
         {
            alertError(errorMsg: "Impossible de poster un message", userInfo: "Impossible de poster un message")
@@ -126,10 +128,10 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         let message = Message(context: context)
         
-        message.objetM = "Bonjour"
+        message.objetM = objet
         message.contenuM = contenu
         
-        if MessageSet.addMessage(message: message) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible d'ajouter une actualité", andMessage: "")}
+        if MessageSet.addMessage(message: message) {alert(WithTitle: "Message envoyé", andMessage: "")} else {alert(WithTitle: "Impossible d'ajouter une actualité", andMessage: "")}
         
         
     }
