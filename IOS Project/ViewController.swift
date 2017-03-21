@@ -28,29 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        var personnes : [Personne]
-        let request : NSFetchRequest<Personne> = Personne.fetchRequest()
-        let leo : String = "leo"
-        let predicate : NSPredicate = NSPredicate(format: "nomP = %@", leo)
-        request.predicate = predicate
-        do{
-            personnes = try CoreDataManager.context.fetch(request)
-        }
-        catch let error as NSError{
-            fatalError("erreur executing fetchRequest : \(error)")
-        }
-        if personnes.count == 0{
-            let leo = Personne.newPersonne(prenom: "leo", nom: "leo", passwd: "leo", statut: 1)
-            leo.loginP = "leo.leo"
-            let error = CoreDataManager.save()
-            if error != nil{
-                fatalError("erreur : \(error)")
-            }
-        }
-        else{
-            print("leo is living")
-        }
- 
+         
     }
 
     override func didReceiveMemoryWarning() {

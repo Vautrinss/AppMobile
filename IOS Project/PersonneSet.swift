@@ -32,7 +32,7 @@ class PersonneSet {
     /// - Returns: <#return value description#>
     
     
-    func addPersonne(personne: Personne) -> Bool{
+    static func addPersonne(personne: Personne) -> Bool{
         if CoreDataManager.save() == nil { // pas d'erreur
             return true
         }
