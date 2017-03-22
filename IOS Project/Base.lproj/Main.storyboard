@@ -187,10 +187,10 @@
             </objects>
             <point key="canvasLocation" x="75" y="181"/>
         </scene>
-        <!--Fil Actu View-->
+        <!--Add Mess Controller-->
         <scene sceneID="DeP-gs-8zg">
             <objects>
-                <viewController id="5Uu-xL-9ck" customClass="FilActuView" customModule="IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Uu-xL-9ck" customClass="addMessController" customModule="IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aCU-G0-xHY"/>
                         <viewControllerLayoutGuide type="bottom" id="gcb-Dz-jhH"/>
@@ -231,12 +231,18 @@
                                 <rect key="frame" x="214" y="481" width="55" height="30"/>
                                 <state key="normal" title="Envoyer"/>
                                 <connections>
-                                    <action selector="send:" destination="5Uu-xL-9ck" eventType="touchUpInside" id="87t-WX-P9w"/>
+                                    <action selector="send:" destination="5Uu-xL-9ck" eventType="touchUpInside" id="1yl-yH-FjC"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QPD-tW-For">
                                 <rect key="frame" x="0.0" y="166" width="320" height="119"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-sR-0sQ">
+                                <rect key="frame" x="19" y="176" width="283" height="230"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -251,6 +257,7 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="groupe" destination="pWE-sR-0sQ" id="dUD-Aa-6MY"/>
                         <outlet property="newMessage" destination="spc-ij-hJn" id="WYS-QZ-kvy"/>
                         <outlet property="newMessageObjet" destination="6Aw-0H-YPn" id="wcV-np-65c"/>
                     </connections>
@@ -382,7 +389,7 @@
         <!--addUser-->
         <scene sceneID="VCp-VB-gBX">
             <objects>
-                <viewController title="addUser" id="09P-bT-XGZ" customClass="ProfilController" customModule="IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="addUser" id="09P-bT-XGZ" customClass="addUserController" customModule="IOS_Project" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b8X-uy-CfT"/>
                         <viewControllerLayoutGuide type="bottom" id="WCo-Cf-5ig"/>
@@ -410,25 +417,25 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" autocorrectionType="no" keyboardType="emailAddress"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="next"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aZ2-VN-T3M">
                                 <rect key="frame" x="207" y="68" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="alphabet"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Rf-B7-hBt">
                                 <rect key="frame" x="147" y="466" width="50" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Ajouter"/>
                                 <connections>
-                                    <action selector="add:" destination="09P-bT-XGZ" eventType="touchUpInside" id="DDU-9U-e4u"/>
+                                    <action selector="add:" destination="09P-bT-XGZ" eventType="touchUpInside" id="hEZ-fP-zNP"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bhn-lU-MTx">
-                                <rect key="frame" x="0.0" y="106" width="320" height="216"/>
+                                <rect key="frame" x="0.0" y="106" width="320" height="174"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="etudiant" value="NO"/>
@@ -461,9 +468,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="firstName" destination="aZ2-VN-T3M" id="2aE-eA-z0H"/>
-                        <outlet property="lastName" destination="dBk-Zd-B54" id="3hQ-sW-mtp"/>
-                        <outlet property="statut" destination="Bhn-lU-MTx" id="B3c-se-4e1"/>
+                        <outlet property="firstName" destination="aZ2-VN-T3M" id="kNl-cW-8pp"/>
+                        <outlet property="lastName" destination="dBk-Zd-B54" id="FLV-9K-FB6"/>
+                        <outlet property="statut" destination="Bhn-lU-MTx" id="e03-Wr-IW1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1qA-PO-mZA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -475,7 +482,7 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="MR1-6R-IMl"/>
         <segue reference="vJY-7X-DoW"/>
-        <segue reference="WI7-VN-iNQ"/>
     </inferredMetricsTieBreakers>
 </document>

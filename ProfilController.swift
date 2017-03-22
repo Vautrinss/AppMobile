@@ -10,28 +10,12 @@ import Foundation
 import UIKit
 import CoreData
 
-class ProfilController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    
-    @IBOutlet weak var lastName: UITextField!
-    
-    @IBOutlet weak var firstName: UITextField!
-    
-    @IBOutlet weak var statut: UIPickerView!
-    
-    var pickerData: [String] = [String]()
+class ProfilController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // Connect data:
-        self.statut.delegate = self
-        self.statut.dataSource = self
-        
-        // Input data into the Array:
-        pickerData = ["Etudiant", "Enseignant", "Secretaire", "Responsable departement"]
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -39,20 +23,6 @@ class ProfilController: UIViewController, UIPickerViewDelegate, UIPickerViewData
     }
     
     
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // The number of rows of data
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
     
     
     
@@ -75,36 +45,7 @@ class ProfilController: UIViewController, UIPickerViewDelegate, UIPickerViewData
     }
     
     
-    func addUser(firstName p1 : String, lastName p2 : String)
-    {
-    var personnes : [Personne]
-    let pwd = p1 + "." + p2
-    let request : NSFetchRequest<Personne> = Personne.fetchRequest()
-    let predicate : NSPredicate = NSPredicate(format: "nomP = %@", firstName)
-    request.predicate = predicate
-    do{
-    personnes = try CoreDataManager.context.fetch(request)
-    }
-    catch let error as NSError{
-    fatalError("erreur executing fetchRequest : \(error)")
-    }
-    if personnes.count == 0{
-    let leo = Personne.newPersonne(prenom: p1, nom: p2, passwd: pwd, statut: 1)
-    leo.loginP = pwd
-    if PersonneSet.addPersonne(personne: leo) {alertError(errorMsg: "Utilisteur créé", userInfo: "")} else {alertError(errorMsg: "Impossible d'ajouter un utilisateur", userInfo: "")}
-    }
-    else{
-    print("leo is living")
-    }
-        
-    }
-    
 
-    @IBAction func add(_ sender: Any) {
-        if (self.lastName.text != "") && (self.firstName.text != ""){
-            self.addUser(firstName: firstName.text!, lastName: lastName.text!)
-        }
-    }
 
 
     

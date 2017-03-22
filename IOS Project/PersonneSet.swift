@@ -50,11 +50,13 @@ class PersonneSet {
     
     func doesUserExist(login: String, passwd: String) -> Personne?{
         var users : [Personne]
+        print("OK1")
         let request : NSFetchRequest<Personne> = Personne.fetchRequest()
         request.predicate = NSPredicate(format: "loginP == %@", login)
         do{
             users = try CoreDataManager.context.fetch(request)
             if users.count == 1{
+                print("OK2")
                 if users[0].checkPasswd(passwd: passwd){
                     return users[0]
                 }
