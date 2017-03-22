@@ -33,7 +33,16 @@ class GroupeSet {
     
     
     
-    static func addGroupe(groupe: Groupe) -> Bool{
+    
+    func newGroupe(nom: String) -> Groupe{
+        
+        let groupe = Groupe(context: CoreDataManager.context)
+        groupe.nomGroupe = nom
+        return groupe
+    }
+    
+    
+    func addGroupe(groupe: Groupe) -> Bool{
         if CoreDataManager.save() == nil { // pas d'erreur
             return true
         }
@@ -42,8 +51,6 @@ class GroupeSet {
     
     func listGroupe() -> [Groupe]? {
         var groupes : [Groupe]
-        var listNom : [String] = []
-        var i = 0
         let request : NSFetchRequest<Groupe> = Groupe.fetchRequest()
         do{
             groupes = try CoreDataManager.context.fetch(request)
@@ -81,6 +88,41 @@ class GroupeSet {
         return false
     }
     
+    func groupeCorrespondant(name: String) -> Groupe? {
+        var groupes : [Groupe]
+        let request : NSFetchRequest<Groupe> = Groupe.fetchRequest()
+        request.predicate = NSPredicate(format: "nomGroupe == %@", name)
+        do{
+            groupes = try CoreDataManager.context.fetch(request)
+            if groupes.count == 1{
+                return groupes[0]
+            }
+            else{
+                if groupes.count == 0
+                {
+                    let nGroupe : Groupe = self.newGroupe(nom: name)
+                    if(addGroupe(groupe: nGroupe) == false)
+                    {
+                        print("erreur : imossible d'ajouter le groupe")
+                        return nil
+                    }
+                    else {
+                        return nGroupe
+                    }
+                    
+                }
+                else{
+                return nil
+                }
+            }
+        }
+        catch let error as NSError{
+            print("erreur : \(error.userInfo["message"])")
+            return nil
+        }
+        
+    }
+
     
     
 }

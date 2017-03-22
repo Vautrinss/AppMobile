@@ -19,6 +19,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     var pickerData: [String] = []
     var g: GroupeSet = GroupeSet()
+    var groupeChoisi: String = ""
     
     
     
@@ -53,9 +54,12 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
-    
-    
-    
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        self.groupeChoisi = pickerData[row] as String
+
+    }
     
     
     func alertError(errorMsg error : String, userInfo user: String = "")
@@ -71,9 +75,12 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
    
     @IBAction func send(_ sender: Any) {
+        
+        print(groupeChoisi)
         if (self.newMessage.text != "") && (self.newMessageObjet.text != ""){
             self.addActu(contenuActu: self.newMessage.text, objetActu: self.newMessageObjet.text!)
         }
+        self.performSegue(withIdentifier: "retourActu", sender: self)
     }
     
     
@@ -90,6 +97,10 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         message.objetM = objet
         message.contenuM = contenu
+        message.adresser = g.groupeCorrespondant(name: groupeChoisi)
+        message.auteurMess = Session.userConnected
+        
+        
         
         if MessageSet.addMessage(message: message) {alertError(errorMsg: "Message envoyé", userInfo: "")} else {alertError(errorMsg: "Impossible d'ajouter une actualité", userInfo: "")}
         

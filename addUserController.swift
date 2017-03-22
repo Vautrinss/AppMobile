@@ -20,8 +20,15 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
 
     @IBOutlet weak var statut: UIPickerView!
 
+    @IBOutlet weak var promo: UITextField!
+    
+    @IBOutlet weak var promoLabel: UILabel!
+    
+    @IBOutlet weak var promoInput: UITextField!
+    
     
     var pickerData: [String] = []
+    var choixStatut: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +60,23 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(pickerData[row] == "Etudiant")
+        {
+            self.promoLabel.isEnabled = true
+            self.promoInput.isEnabled = true
+            self.promoLabel.isHidden = false
+            self.promoInput.isHidden = false
+        }
+        else {
+            self.promoLabel.isEnabled = false
+            self.promoInput.isEnabled = false
+            self.promoLabel.isHidden = true
+            self.promoInput.isHidden = true
+        }
+        self.choixStatut = self.pickerData[row]
+    }
 
     
     
@@ -69,7 +93,7 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     
 
     
-    func addUser(firstName p1 : String, lastName p2 : String)
+    func addUser(firstName p1 : String, lastName p2 : String, promo promotion: String, statut s: Int16)
     {
         var personnes : [Personne]
         let pwd = p1 + "." + p2
@@ -83,7 +107,7 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
             fatalError("erreur executing fetchRequest : \(error)")
         }
         if personnes.count == 0{
-            let leo = Personne.newPersonne(prenom: p1, nom: p2, passwd: pwd, statut: 1)
+            let leo = Personne.newPersonne(prenom: p1, nom: p2, passwd: pwd, statut: s, promo: promotion)
             leo.loginP = pwd
             if PersonneSet.addPersonne(personne: leo) {alertError(errorMsg: "Utilisteur créé", userInfo: "")} else {alertError(errorMsg: "Impossible d'ajouter un utilisateur", userInfo: "")}
         }
@@ -95,8 +119,14 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     
     
     @IBAction func add(_ sender: Any) {
-        if (self.lastName.text != "") && (self.firstName.text != ""){
-            self.addUser(firstName: firstName.text!, lastName: lastName.text!)
+        var choixStatut: Int16 = 1;
+        if (self.lastName.text != "") && (self.firstName.text != "") && (self.promo.text != ""){
+            if(self.choixStatut == "Responsable departement"){choixStatut = 1}
+            else if(self.choixStatut == "Secretaire"){choixStatut = 2}
+            else if(self.choixStatut == "Enseignant"){choixStatut = 3}
+            else {choixStatut = 4}
+            
+            self.addUser(firstName: firstName.text!, lastName: lastName.text!, promo: promo.text!, statut: choixStatut)
         }
     }
     

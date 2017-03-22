@@ -13,13 +13,26 @@ extension Personne {
 // Ici methode pour crypter password
 // Methode verification password (renvoi un bol)
     
-    static func newPersonne(prenom: String, nom: String, passwd: String, statut: Int16) -> Personne{
+    
+    
+    static func newPersonne(prenom: String, nom: String, passwd: String, statut: Int16, promo: String) -> Personne{
         
+        let g: GroupeSet = GroupeSet()
         let personne = Personne(context: CoreDataManager.context)
         personne.nomP = nom
         personne.prenomP = prenom
         personne.password = passwd
         personne.statutP = statut
+        personne.addToAppartenir(g.groupeCorrespondant(name: "Tous")!)
+        if(statut == 4){
+            personne.addToAppartenir(g.groupeCorrespondant(name: promo)!)
+        }
+        else if(statut == 3){
+            personne.addToAppartenir(g.groupeCorrespondant(name: "Enseignant")!)
+        }
+        else {
+            personne.addToAppartenir(g.groupeCorrespondant(name: "Secretariat")!)
+        }
         return personne
     }
     

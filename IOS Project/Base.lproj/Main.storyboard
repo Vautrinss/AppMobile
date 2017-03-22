@@ -96,7 +96,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IqH-cd-jKa" id="X9J-vb-jdb">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="53"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="54"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Objet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxx-AJ-RaF">
@@ -224,7 +224,7 @@
                                 <rect key="frame" x="73" y="481" width="53" height="30"/>
                                 <state key="normal" title="Annuler"/>
                                 <connections>
-                                    <segue destination="EuT-pg-zSO" kind="show" id="Ksn-8e-DCo"/>
+                                    <segue destination="EuT-pg-zSO" kind="show" identifier="retourActu" id="Ksn-8e-DCo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-gI-XiN">
@@ -474,6 +474,9 @@
                     <connections>
                         <outlet property="firstName" destination="aZ2-VN-T3M" id="kNl-cW-8pp"/>
                         <outlet property="lastName" destination="dBk-Zd-B54" id="FLV-9K-FB6"/>
+                        <outlet property="promo" destination="Uej-sE-BfF" id="xcy-SR-4Gw"/>
+                        <outlet property="promoInput" destination="Uej-sE-BfF" id="JYf-dZ-YQG"/>
+                        <outlet property="promoLabel" destination="wxJ-bI-7Yz" id="oKi-cT-iSA"/>
                         <outlet property="statut" destination="Bhn-lU-MTx" id="e03-Wr-IW1"/>
                     </connections>
                 </viewController>
