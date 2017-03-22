@@ -12,8 +12,21 @@ import CoreData
 
 class ProfilController: UIViewController {
     
+    @IBOutlet weak var addUser: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if Session.userConnected?.statutP == 1
+        {
+            self.addUser.isEnabled = true
+            self.addUser.isHidden = false
+        }
+        else{
+            self.addUser.isHidden = true
+            self.addUser.isEnabled = false
+        }
+        
     }
     
     

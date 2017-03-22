@@ -26,7 +26,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        self.pickerData = g.listGroupsNames()
+        self.pickerData = g.listGroupsNames(list: g.listGroupe(personne: Session.userConnected!)!)
         
         // Connect data:
         self.groupe.delegate = self
@@ -72,6 +72,10 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     
     
+    @IBAction func cancel(_ sender: Any) {
+        self.performSegue(withIdentifier: "retourActu", sender: self)
+        
+    }
 
    
     @IBAction func send(_ sender: Any) {
@@ -79,8 +83,9 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         print(groupeChoisi)
         if (self.newMessage.text != "") && (self.newMessageObjet.text != ""){
             self.addActu(contenuActu: self.newMessage.text, objetActu: self.newMessageObjet.text!)
+        
+            self.performSegue(withIdentifier: "retourActu", sender: self)
         }
-        self.performSegue(withIdentifier: "retourActu", sender: self)
     }
     
     

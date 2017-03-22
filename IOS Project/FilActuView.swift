@@ -108,7 +108,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     func deleteActu(messageWithIndex indexPath: IndexPath){
             let message = self.messagesFetched.object(at: indexPath)
             if MessageSet.deleteMessage(message: message) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible d'ajouter une actualité", andMessage: "")}
-            self.viewDidLoad()
+            
         }
     
 

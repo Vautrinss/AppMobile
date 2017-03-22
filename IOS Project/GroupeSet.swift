@@ -63,6 +63,15 @@ class GroupeSet {
    
     }
     
+    
+    
+    func listGroupe(personne: Personne) -> [Groupe]? {
+        let a = personne.appartenir
+        return a?.allObjects as! [Groupe]?
+    }
+    
+    
+    
     func listGroupsNames() -> [String]{
         var groupes : [Groupe]
         var ret : [String] = []
@@ -78,6 +87,19 @@ class GroupeSet {
         }
         return ret
     }
+
+    func listGroupsNames(list: [Groupe]) -> [String]{
+        
+        var ret : [String] = []
+        
+            for group in list{
+                ret.append(group.nomGroupe ?? "pas de nom de groupe")
+            }
+        return ret
+    }
+    
+    
+    
     
     static func deleteGroupe(groupe: Groupe) -> Bool{
         

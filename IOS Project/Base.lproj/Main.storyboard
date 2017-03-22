@@ -224,7 +224,7 @@
                                 <rect key="frame" x="73" y="481" width="53" height="30"/>
                                 <state key="normal" title="Annuler"/>
                                 <connections>
-                                    <segue destination="EuT-pg-zSO" kind="show" identifier="retourActu" id="Ksn-8e-DCo"/>
+                                    <action selector="cancel:" destination="5Uu-xL-9ck" eventType="touchUpInside" id="NPu-RB-Vdx"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-gI-XiN">
@@ -264,6 +264,7 @@
                         <outlet property="groupe" destination="pWE-sR-0sQ" id="hyZ-GD-KZx"/>
                         <outlet property="newMessage" destination="spc-ij-hJn" id="ctR-BB-OGC"/>
                         <outlet property="newMessageObjet" destination="6Aw-0H-YPn" id="enI-LV-Idr"/>
+                        <segue destination="EuT-pg-zSO" kind="show" identifier="retourActu" id="Z5g-Dh-eZI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVc-RT-uEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -383,6 +384,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Profil" image="user" id="L1Y-8I-4m1"/>
                     <connections>
+                        <outlet property="addUser" destination="aLT-Qy-SN3" id="AN1-Y7-eVM"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="deconnexion" id="o16-cd-83B"/>
                     </connections>
                 </viewController>
@@ -490,6 +492,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vJY-7X-DoW"/>
-        <segue reference="Ksn-8e-DCo"/>
+        <segue reference="Z5g-Dh-eZI"/>
     </inferredMetricsTieBreakers>
 </document>
