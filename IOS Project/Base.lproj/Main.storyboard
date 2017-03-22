@@ -328,7 +328,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohi-k7-GmB">
-                                <rect key="frame" x="115" y="479" width="90" height="30"/>
+                                <rect key="frame" x="115" y="528" width="90" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Kxo-ZW-wIE"/>
                                     <constraint firstAttribute="width" constant="90" id="RnM-jw-5EQ"/>
@@ -463,6 +463,7 @@
                     <connections>
                         <outlet property="firstName" destination="aZ2-VN-T3M" id="2aE-eA-z0H"/>
                         <outlet property="lastName" destination="dBk-Zd-B54" id="3hQ-sW-mtp"/>
+                        <outlet property="statut" destination="Bhn-lU-MTx" id="B3c-se-4e1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1qA-PO-mZA" userLabel="First Responder" sceneMemberID="firstResponder"/>
