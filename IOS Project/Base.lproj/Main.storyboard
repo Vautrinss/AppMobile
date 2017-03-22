@@ -96,7 +96,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IqH-cd-jKa" id="X9J-vb-jdb">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="54"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Objet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxx-AJ-RaF">
@@ -141,7 +141,7 @@
                                 </constraints>
                                 <state key="normal" title="Publier une actualité"/>
                                 <connections>
-                                    <segue destination="5Uu-xL-9ck" kind="show" id="u4j-TJ-rVg"/>
+                                    <segue destination="5Uu-xL-9ck" kind="show" id="AzB-cv-eTQ"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -224,14 +224,14 @@
                                 <rect key="frame" x="73" y="481" width="53" height="30"/>
                                 <state key="normal" title="Annuler"/>
                                 <connections>
-                                    <segue destination="EuT-pg-zSO" kind="show" id="MR1-6R-IMl"/>
+                                    <segue destination="EuT-pg-zSO" kind="show" id="Ksn-8e-DCo"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJE-gI-XiN">
                                 <rect key="frame" x="214" y="481" width="55" height="30"/>
                                 <state key="normal" title="Envoyer"/>
                                 <connections>
-                                    <action selector="send:" destination="5Uu-xL-9ck" eventType="touchUpInside" id="1yl-yH-FjC"/>
+                                    <action selector="send:" destination="5Uu-xL-9ck" eventType="touchUpInside" id="SBX-m3-Tws"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QPD-tW-For">
@@ -243,6 +243,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Uu-xL-9ck" id="vv7-7l-3Cz"/>
+                                    <outlet property="delegate" destination="5Uu-xL-9ck" id="ona-9L-j5e"/>
+                                </connections>
                             </pickerView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -257,9 +261,9 @@
                     </view>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="groupe" destination="pWE-sR-0sQ" id="dUD-Aa-6MY"/>
-                        <outlet property="newMessage" destination="spc-ij-hJn" id="WYS-QZ-kvy"/>
-                        <outlet property="newMessageObjet" destination="6Aw-0H-YPn" id="wcV-np-65c"/>
+                        <outlet property="groupe" destination="pWE-sR-0sQ" id="hyZ-GD-KZx"/>
+                        <outlet property="newMessage" destination="spc-ij-hJn" id="ctR-BB-OGC"/>
+                        <outlet property="newMessageObjet" destination="6Aw-0H-YPn" id="enI-LV-Idr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EVc-RT-uEG" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -482,7 +486,7 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MR1-6R-IMl"/>
         <segue reference="vJY-7X-DoW"/>
+        <segue reference="Ksn-8e-DCo"/>
     </inferredMetricsTieBreakers>
 </document>

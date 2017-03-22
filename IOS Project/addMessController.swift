@@ -11,30 +11,21 @@ import CoreData
 
 class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
    
-    
     @IBOutlet weak var newMessageObjet: UITextField!
     
     @IBOutlet weak var newMessage: UITextView!
-    
+
     @IBOutlet weak var groupe: UIPickerView!
     
     var pickerData: [String] = []
-    var groupes: [Groupe] = []
-    var g: GroupeSet
+    var g: GroupeSet = GroupeSet()
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        groupes = g.groupeList
-        var a: String
-        var y = 0
-        for i in groupes {
-            a = i.nomGroupe!
-            pickerData[y] = a
-            y = y + 1
-        }
+        self.pickerData = g.listGroupsNames()
         
         // Connect data:
         self.groupe.delegate = self
@@ -78,6 +69,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     
 
+   
     @IBAction func send(_ sender: Any) {
         if (self.newMessage.text != "") && (self.newMessageObjet.text != ""){
             self.addActu(contenuActu: self.newMessage.text, objetActu: self.newMessageObjet.text!)
