@@ -19,6 +19,7 @@
 		3A89E4121E530CCB00E91F94 /* FilActuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A89E4111E530CCB00E91F94 /* FilActuView.swift */; };
 		3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */; };
 		A310972D1E7025A1003A789A /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A310972C1E7025A1003A789A /* Session.swift */; };
+		A35747FE1E841BF500E75C20 /* documentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35747FD1E841BF500E75C20 /* documentController.swift */; };
 		A38E876E1E828B15000FF599 /* GroupeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38E876D1E828B15000FF599 /* GroupeSet.swift */; };
 		A38E87711E829048000FF599 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38E876F1E829048000FF599 /* Main.storyboard */; };
 		A3A28D2F1E7957E900F25847 /* ProfilController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3A28D2E1E7957E900F25847 /* ProfilController.swift */; };
@@ -65,6 +66,7 @@
 		3A89E4111E530CCB00E91F94 /* FilActuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilActuView.swift; sourceTree = "<group>"; };
 		3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActuViewCellTableViewCell.swift; path = ../ActuViewCellTableViewCell.swift; sourceTree = "<group>"; };
 		A310972C1E7025A1003A789A /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Session.swift; path = "IOS Project/Session.swift"; sourceTree = "<group>"; };
+		A35747FD1E841BF500E75C20 /* documentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = documentController.swift; sourceTree = "<group>"; };
 		A38E876D1E828B15000FF599 /* GroupeSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupeSet.swift; sourceTree = "<group>"; };
 		A38E87701E829048000FF599 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A3A28D2E1E7957E900F25847 /* ProfilController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilController.swift; path = ../ProfilController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				A3B7E29C1E82788D000E999C /* addUserController.swift */,
 				3A53C9791E51B5170039A34E /* ViewController.swift */,
 				A3A28D2E1E7957E900F25847 /* ProfilController.swift */,
+				A35747FD1E841BF500E75C20 /* documentController.swift */,
 				3A53C9811E51B5170039A34E /* Assets.xcassets */,
 				3A53C9831E51B5170039A34E /* LaunchScreen.storyboard */,
 				A38E876F1E829048000FF599 /* Main.storyboard */,
@@ -323,6 +326,7 @@
 				3A89E4121E530CCB00E91F94 /* FilActuView.swift in Sources */,
 				3A53C97A1E51B5170039A34E /* ViewController.swift in Sources */,
 				3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */,
+				A35747FE1E841BF500E75C20 /* documentController.swift in Sources */,
 				A3F4A3941E7003C200C7D447 /* MessageSet.swift in Sources */,
 				3A53C9781E51B5170039A34E /* AppDelegate.swift in Sources */,
 				A3F4A3901E7001A100C7D447 /* PersonneSet.swift in Sources */,

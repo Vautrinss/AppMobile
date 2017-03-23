@@ -120,13 +120,15 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     
     @IBAction func add(_ sender: Any) {
         var choixStatut: Int16 = 1;
-        if (self.lastName.text != "") && (self.firstName.text != "") && (self.promo.text != ""){
+        if (self.lastName.text != "") && (self.firstName.text != "") {
             if(self.choixStatut == "Responsable departement"){choixStatut = 1}
             else if(self.choixStatut == "Secretaire"){choixStatut = 2}
             else if(self.choixStatut == "Enseignant"){choixStatut = 3}
             else {choixStatut = 4}
-            
+            if(choixStatut != 4) || (self.promo.text != ""){
             self.addUser(firstName: firstName.text!, lastName: lastName.text!, promo: promo.text!, statut: choixStatut)
+        
+            }
         }
     }
     
