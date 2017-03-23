@@ -96,7 +96,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="54"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IqH-cd-jKa" id="X9J-vb-jdb">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="54"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="53"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auteur" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxx-AJ-RaF">
@@ -324,11 +324,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UDM-gL-3t2">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="docCell" id="UDM-gL-3t2" customClass="cellViewDocList" customModule="IOS_Project" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="288" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UDM-gL-3t2" id="7Sh-g1-dGo">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nom document" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vBW-FE-X9N">
@@ -347,6 +347,10 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="auteurDoc" destination="JhZ-rS-fM6" id="7Qc-A8-7aQ"/>
+                                            <outlet property="nomDoc" destination="vBW-FE-X9N" id="hYx-5v-Xq5"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -363,6 +367,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Document" id="gHq-bw-898"/>
+                    <connections>
+                        <outlet property="docTable" destination="ymN-7K-Nao" id="fDx-nc-IMV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sbZ-hA-Gnx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -381,7 +388,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2NZ-3e-9DZ">
-                                <rect key="frame" x="16" y="20" width="288" height="528"/>
+                                <rect key="frame" x="16" y="20" width="288" height="491"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -389,7 +396,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aDk-ZZ-Wwm" id="3bT-v8-jWy">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xG7-ey-RMp">
@@ -403,7 +410,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="login" destination="xG7-ey-RMp" id="mYg-f5-Gcg"/>
-                                            <outlet property="loginUser" destination="3bT-v8-jWy" id="o0u-JB-x48"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -415,7 +421,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profil" image="user" id="Jod-VN-IwO"/>
+                    <tabBarItem key="tabBarItem" title="Profil" image="user" id="edT-oU-Wej"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="userTable" destination="2NZ-3e-9DZ" id="pZF-f6-yZY"/>
@@ -424,7 +430,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dhn-qM-Ar2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-383" y="-2798"/>
+            <point key="canvasLocation" x="-384.375" y="-2798.2394366197182"/>
         </scene>
         <!--Profil-->
         <scene sceneID="s5d-YD-jLa">
@@ -455,17 +461,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohi-k7-GmB">
-                                <rect key="frame" x="115" y="528" width="90" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Kxo-ZW-wIE"/>
-                                    <constraint firstAttribute="width" constant="90" id="RnM-jw-5EQ"/>
-                                </constraints>
-                                <state key="normal" title="Déconnexion"/>
-                                <connections>
-                                    <action selector="deconnexion:" destination="jrN-Yr-y38" eventType="touchUpInside" id="nLB-vr-I86"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prenom" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8bt-Wc-fyO">
                                 <rect key="frame" x="139" y="97" width="60" height="21"/>
                                 <constraints>
@@ -500,6 +495,17 @@
                                     <action selector="changePwd:" destination="jrN-Yr-y38" eventType="touchUpInside" id="Odf-V5-9lJ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohi-k7-GmB">
+                                <rect key="frame" x="115" y="479" width="90" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Kxo-ZW-wIE"/>
+                                    <constraint firstAttribute="width" constant="90" id="RnM-jw-5EQ"/>
+                                </constraints>
+                                <state key="normal" title="Déconnexion"/>
+                                <connections>
+                                    <action selector="deconnexion:" destination="jrN-Yr-y38" eventType="touchUpInside" id="nLB-vr-I86"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -514,7 +520,8 @@
                             <constraint firstItem="ohi-k7-GmB" firstAttribute="centerX" secondItem="5Yh-2S-UyO" secondAttribute="centerX" id="udh-Ym-54d"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profil" image="user" id="L1Y-8I-4m1"/>
+                    <tabBarItem key="tabBarItem" title="Profil" image="user" id="Jod-VN-IwO"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="addUser" destination="aLT-Qy-SN3" id="AN1-Y7-eVM"/>
                         <segue destination="BYZ-38-t0r" kind="show" identifier="deconnexion" id="o16-cd-83B"/>
@@ -602,7 +609,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profil" image="user" id="8yI-Hp-qSb"/>
+                    <tabBarItem key="tabBarItem" title="Profil" image="user" id="TIH-Eo-oCf"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="firstName" destination="aZ2-VN-T3M" id="kNl-cW-8pp"/>
                         <outlet property="lastName" destination="dBk-Zd-B54" id="FLV-9K-FB6"/>
@@ -623,6 +631,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d42-wH-Vxy"/>
-        <segue reference="uVG-hK-754"/>
+        <segue reference="o16-cd-83B"/>
     </inferredMetricsTieBreakers>
 </document>
