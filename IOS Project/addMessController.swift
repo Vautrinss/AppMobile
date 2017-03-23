@@ -91,7 +91,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
             if self.groupeChoisi == "" {self.groupeChoisi = pickerData[groupe.selectedRow(inComponent: 0)]}
             self.addActu(contenuActu: self.newMessage.text, objetActu: self.newMessageObjet.text!)
         
-            self.performSegue(withIdentifier: "retourActu", sender: self)
+            self.performSegue(withIdentifier: "home", sender: self)
         }
     }
     

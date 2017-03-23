@@ -14,6 +14,10 @@ class GroupeSet {
     
     
     static var groupeChoisi : Groupe?
+    static var grChoix : Int?
+    
+    
+    
     
     
     var groupeList : [Groupe]{

@@ -13,6 +13,7 @@ class Session{
     static var personnes : PersonneSet = PersonneSet()
     static var userConnected : Personne?
     
+    
     static func login(login: String, passwd: String){
         self.userConnected = self.personnes.doesUserExist(login: login, passwd: passwd)
         let g : GroupeSet = GroupeSet()

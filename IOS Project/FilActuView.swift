@@ -32,6 +32,11 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        if(GroupeSet.grChoix == nil) { GroupeSet.grChoix = 0 }
+        choixGroupe.selectRow(GroupeSet.grChoix!, inComponent: 0, animated: true)
+
+        
         do{
             //try self.actus = context.fetch(request)
             try self.messagesFetched.performFetch()
@@ -146,6 +151,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     {
         let a = pickerData[row] as String
         GroupeSet.groupeChoisi = self.groupe.groupeCorrespondant(name: a)
+        GroupeSet.grChoix = row
+        self.actuTable.reloadData()
         
         
     }
