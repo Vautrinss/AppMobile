@@ -492,7 +492,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Modifier le mot de passe"/>
                                 <connections>
-                                    <action selector="changePwd:" destination="jrN-Yr-y38" eventType="touchUpInside" id="Odf-V5-9lJ"/>
+                                    <action selector="changeMdp:" destination="jrN-Yr-y38" eventType="touchUpInside" id="nMp-ka-MEG"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ohi-k7-GmB">

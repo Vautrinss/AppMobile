@@ -38,26 +38,54 @@ class ProfilController: UIViewController {
     
     
     
-    
+    // Popup changement de Mdp
+
     @IBAction func changeMdp(_ sender: Any) {
-        let popupMdp = UIAlertController(title: "Modifier le mot de passe", message: "mdp", preferredStyle: .alert)
+        var pass1TextField: UITextField?
+        var pass2TextField: UITextField?
+
+
+        
+        let alert = UIAlertController(title: "Modifier le mot de passe", message: "mdp", preferredStyle: .alert)
+    
+        
+        alert.addTextField { (textField) -> Void in
+            // Enter the textfiled customization code here.
+            pass1TextField = textField
+            pass1TextField?.placeholder = "Mot de passe"
+            pass1TextField?.isSecureTextEntry = true
+        }
+        
+        alert.addTextField { (textField) -> Void in
+            // Enter the textfiled customization code here.
+            pass2TextField = textField
+            pass2TextField?.placeholder = "Mot de passe"
+            pass2TextField?.isSecureTextEntry = true
+        }
         
         let saveAction = UIAlertAction(title: "Modifier", style: .default)
         {
             [unowned self] action in
-            guard let textField = popupMdp.textFields?.first,
-                let nameToSave = textField.text else {
+            if(pass1TextField?.text == pass1TextField?.text){
+            
+                guard let textField = alert.textFields?.first,
+                    let passToSave = textField.text else {
                     return
                 }
-
+                
+                Session.userConnected?.modifyPwd(pwd: passToSave)
+            }
+            
         }
+        
         
         let cancelAction = UIAlertAction(title: "Annuler", style: .default)
         
 
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
         
-        present(popupMdp, animated: true)
-
+        present(alert, animated: true, completion: nil)
 
     }
 
@@ -79,7 +107,6 @@ class ProfilController: UIViewController {
     }
     
     
-
 
 
     
