@@ -14,6 +14,7 @@ class ProfilController: UIViewController {
     
     @IBOutlet weak var addUser: UIButton!
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,10 +39,30 @@ class ProfilController: UIViewController {
     
     
     
-    
-    
-    
-    
+    @IBAction func changeMdp(_ sender: Any) {
+        let popupMdp = UIAlertController(title: "Modifier le mot de passe", message: "mdp", preferredStyle: .alert)
+        
+        let saveAction = UIAlertAction(title: "Modifier", style: .default)
+        {
+            [unowned self] action in
+            guard let textField = popupMdp.textFields?.first,
+                let nameToSave = textField.text else {
+                    return
+                }
+
+        }
+        
+        let cancelAction = UIAlertAction(title: "Annuler", style: .default)
+        
+
+        
+        present(popupMdp, animated: true)
+
+
+    }
+
+
+
     @IBAction func deconnexion(_ sender: Any) {
         
         Session.logout()
