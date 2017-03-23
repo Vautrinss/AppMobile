@@ -79,7 +79,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     
     
     @IBAction func cancel(_ sender: Any) {
-        self.performSegue(withIdentifier: "retourActu", sender: self)
+        self.performSegue(withIdentifier: "home", sender: self)
         
     }
 

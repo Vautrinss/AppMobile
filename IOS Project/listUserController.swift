@@ -1,17 +1,23 @@
-/*import UIKit
+//
+//  listUserController.swift
+//  IOS Project
+//
+//  Created by Leo PERNELLE on 23/03/2017.
+//  Copyright © 2017 leobaptiste. All rights reserved.
+//
+
+import Foundation
+import UIKit
 import CoreData
 
-class documentController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
+class listUserController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
     
-
+    @IBOutlet weak var userTable: UITableView!
     
-    
-    
-    
-    fileprivate lazy var documentsFetched : NSFetchedResultsController<Document> = {
-        let request : NSFetchRequest<Document> = Document.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.nomDoc), ascending:true)]
-        //request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
+    fileprivate lazy var usersFetched : NSFetchedResultsController<Personne> = {
+        let request : NSFetchRequest<Personne> = Personne.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Personne.loginP), ascending:true)]
+        request.predicate = NSPredicate(format: "statut != %@", "1")
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
         fetchResultController.delegate = self
         return fetchResultController
@@ -22,17 +28,18 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         // Do any additional setup after loading the view, typically from a nib.
         do{
             //try self.actus = context.fetch(request)
-            try self.messagesFetched.performFetch()
+            try self.usersFetched.performFetch()
             
         }
         catch let error as NSError{
             self.alertError(errorMsg: "\(error)", userInfo: "\(error.userInfo)")
         }
         
-        if Session.userConnected?.statutP < 4
+        if Session.userConnected?.statutP == 1
         {
+            
         }
-
+        
         
     }
     
@@ -44,17 +51,16 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
-            as! ActuViewCellTableViewCell
-        let message = self.messagesFetched.object(at: indexPath)
-        cell.ObjetActu.text = message.auteurMess?.nomP
-        cell.ContenuActu.text = message.objetM
+        let cell = self.userTable.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
+            as! cellViewUserList
+        let user = self.usersFetched.object(at: indexPath)
+        cell.login.text = user.loginP
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let section = self.messagesFetched.sections?[section] else {
+        guard let section = self.usersFetched.sections?[section] else {
             fatalError("Arrrgh")
         }
         return section.numberOfObjects
@@ -66,9 +72,9 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle==UITableViewCellEditingStyle.delete){
-            self.actuTable.beginUpdates()
+            self.userTable.beginUpdates()
             //self.deleteActu(messageWithIndex: indexPath)
-            self.actuTable.endUpdates()
+            self.userTable.endUpdates()
         }
     }
     
@@ -101,7 +107,6 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         alert.addAction(cancelAction)
         present(alert, animated: true)
     }
+
     
-    
-    
-}*/
+}
