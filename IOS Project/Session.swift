@@ -15,6 +15,8 @@ class Session{
     
     static func login(login: String, passwd: String){
         self.userConnected = self.personnes.doesUserExist(login: login, passwd: passwd)
+        let g : GroupeSet = GroupeSet()
+        GroupeSet.groupeChoisi = g.groupeCorrespondant(name: "Tous")
     }
     static func logout(){
         self.userConnected = nil

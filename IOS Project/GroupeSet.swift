@@ -12,6 +12,10 @@ import CoreData
 class GroupeSet {
     
     
+    
+    static var groupeChoisi : Groupe?
+    
+    
     var groupeList : [Groupe]{
         get{
             var ret : [Groupe]

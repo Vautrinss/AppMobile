@@ -9,15 +9,21 @@
 import UIKit
 import CoreData
 
-class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
+class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
    @IBOutlet weak var actuTable: UITableView!
 
+    @IBOutlet weak var choixGroupe: UIPickerView!
+    
+    var pickerData: [String] = []
+    var groupe: GroupeSet = GroupeSet()
+    
     
 
     
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
         let request : NSFetchRequest<Message> = Message.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
+        request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
         fetchResultController.delegate = self
         return fetchResultController
@@ -35,6 +41,19 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             self.alertError(errorMsg: "\(error)", userInfo: "\(error.userInfo)")
         }
         
+        if Session.userConnected?.statutP == 1
+        {
+        self.pickerData = groupe.listGroupsNames(list: groupe.listGroupe()!)
+        }
+        else{
+        self.pickerData = groupe.listGroupsNames(list: groupe.listGroupe(personne: Session.userConnected!)!)
+        }
+        
+        
+        // Connect data:
+        self.choixGroupe.delegate = self
+        self.choixGroupe.dataSource = self
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,10 +67,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
             as! ActuViewCellTableViewCell
         let message = self.messagesFetched.object(at: indexPath)
-        //self.messagePresenter.configure(theCell: cell, forMessage: message)
-        cell.ObjetActu.text = message.objetM
-        cell.ContenuActu.text = message.contenuM
-        //cell.accessoryType = .detailButton
+        cell.ObjetActu.text = message.auteurMess?.nomP
+        cell.ContenuActu.text = message.objetM
         return cell
     }
     
@@ -111,28 +128,27 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             
         }
     
-
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
-    /*
-     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>){
-     self.actuTable.beginUpdates()
-     }
-     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>){
-     self.actuTable.endUpdates()
-     CoreDataManager.save()
-     }
-     func controller(_ controller: NSFetchedResultsController<NSFetchedResqueststResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?){
-     switch type{
-     case.delete:
-     if let indexPath = indexPath{
-     self.actuTable.deleteRows(at: <#T##[IndexPath]#>, with: .automatic)
-     }
-     default:
-     break
-     }
-     }
-     
-     */
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        let a = pickerData[row] as String
+        GroupeSet.groupeChoisi = self.groupe.groupeCorrespondant(name: a)
+        
+        
+    }
     
     
 }
