@@ -17,9 +17,11 @@ class listUserController: UIViewController, UITableViewDataSource, UITableViewDe
     fileprivate lazy var usersFetched : NSFetchedResultsController<Personne> = {
         let request : NSFetchRequest<Personne> = Personne.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Personne.loginP), ascending:true)]
-        request.predicate = NSPredicate(format: "statut != %@", "1")
+        //request.predicate = NSPredicate(format: "statut != %@", "1")
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
+        print("OK ICI1")
         fetchResultController.delegate = self
+        print("OK ICI2")
         return fetchResultController
     }()
     
@@ -35,10 +37,10 @@ class listUserController: UIViewController, UITableViewDataSource, UITableViewDe
             self.alertError(errorMsg: "\(error)", userInfo: "\(error.userInfo)")
         }
         
-        if Session.userConnected?.statutP == 1
+        /*if Session.userConnected?.statutP == 1
         {
             
-        }
+        }*/
         
         
     }
@@ -73,7 +75,7 @@ class listUserController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle==UITableViewCellEditingStyle.delete){
             self.userTable.beginUpdates()
-            //self.deleteActu(messageWithIndex: indexPath)
+            self.deleteUser(messageWithIndex: indexPath)
             self.userTable.endUpdates()
         }
     }
@@ -109,4 +111,9 @@ class listUserController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     
+    func deleteUser(messageWithIndex indexPath: IndexPath){
+        let user = self.usersFetched.object(at: indexPath)
+        if PersonneSet.deletePersonne(user: user) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible de supprimer cet utilisateur", andMessage: "")}
+        
+    }
 }

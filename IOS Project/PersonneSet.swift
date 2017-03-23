@@ -75,6 +75,18 @@ class PersonneSet {
     }
     
     
+    static func deletePersonne(user: Personne) -> Bool{
+        if(user.statutP != 1)
+        {
+        CoreDataManager.context.delete(user)
+        if CoreDataManager.save() == nil { // pas d'erreur
+            return true
+        }
+        }
+        return false
+    }
+    
+    
     
 }
 
