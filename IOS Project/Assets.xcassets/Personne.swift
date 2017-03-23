@@ -71,4 +71,13 @@ extension Personne {
         return self.passwordP == passwd
     }
     
+    func modifyPwd(pwd: String) -> Bool{
+            self.setValue(pwd, forKey: "passwordP")
+            if CoreDataManager.save() == nil { // pas d'erreur
+                return true
+            }
+        
+        return false
+    }
+    
 }

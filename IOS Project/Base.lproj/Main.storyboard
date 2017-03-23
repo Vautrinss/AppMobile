@@ -497,7 +497,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Modifier le mot de passe"/>
                                 <connections>
-                                    <action selector="changePwd:" destination="jrN-Yr-y38" eventType="touchUpInside" id="Odf-V5-9lJ"/>
+                                    <action selector="changeMdp:" destination="jrN-Yr-y38" eventType="touchUpInside" id="nMp-ka-MEG"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -623,6 +623,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="d42-wH-Vxy"/>
-        <segue reference="uVG-hK-754"/>
+        <segue reference="o16-cd-83B"/>
     </inferredMetricsTieBreakers>
 </document>
