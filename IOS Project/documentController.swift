@@ -1,19 +1,20 @@
-/*import UIKit
+import Foundation
+import UIKit
 import CoreData
 
 class documentController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
     
+    @IBOutlet weak var docTable: UITableView!
 
     
-    
-    
-    
-    fileprivate lazy var documentsFetched : NSFetchedResultsController<Document> = {
+    fileprivate lazy var docsFetched : NSFetchedResultsController<Document> = {
         let request : NSFetchRequest<Document> = Document.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.nomDoc), ascending:true)]
-        //request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Document.nomDoc), ascending:true)]
+        //request.predicate = NSPredicate(format: "statut != %@", "1")
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
+        print("OK ICI1")
         fetchResultController.delegate = self
+        print("OK ICI2")
         return fetchResultController
     }()
     
@@ -22,17 +23,18 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         // Do any additional setup after loading the view, typically from a nib.
         do{
             //try self.actus = context.fetch(request)
-            try self.messagesFetched.performFetch()
+            try self.docsFetched.performFetch()
             
         }
         catch let error as NSError{
             self.alertError(errorMsg: "\(error)", userInfo: "\(error.userInfo)")
         }
         
-        if Session.userConnected?.statutP < 4
-        {
-        }
-
+        /*if Session.userConnected?.statutP == 1
+         {
+         
+         }*/
+        
         
     }
     
@@ -44,17 +46,17 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
-            as! ActuViewCellTableViewCell
-        let message = self.messagesFetched.object(at: indexPath)
-        cell.ObjetActu.text = message.auteurMess?.nomP
-        cell.ContenuActu.text = message.objetM
+        let cell = self.docTable.dequeueReusableCell(withIdentifier: "docCell", for: indexPath)
+            as! cellViewDocList
+        let doc = self.docsFetched.object(at: indexPath)
+        cell.nomDoc.text = doc.nomDoc
+        cell.auteurDoc.text = doc.auteurDoc?.nomP
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        guard let section = self.messagesFetched.sections?[section] else {
+        guard let section = self.docsFetched.sections?[section] else {
             fatalError("Arrrgh")
         }
         return section.numberOfObjects
@@ -66,9 +68,9 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle==UITableViewCellEditingStyle.delete){
-            self.actuTable.beginUpdates()
-            //self.deleteActu(messageWithIndex: indexPath)
-            self.actuTable.endUpdates()
+            self.docTable.beginUpdates()
+            self.deleteUser(messageWithIndex: indexPath)
+            self.docTable.endUpdates()
         }
     }
     
@@ -103,5 +105,11 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     
+    func deleteUser(messageWithIndex indexPath: IndexPath){
+        let doc = self.docsFetched.object(at: indexPath)
+        if DocumentSet.deleteDocument(doc: doc) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible de supprimer ce document", andMessage: "")}
+     
+    }
+
     
-}*/
+    }
