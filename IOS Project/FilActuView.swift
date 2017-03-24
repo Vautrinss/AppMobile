@@ -33,12 +33,9 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        if(GroupeSet.grChoix == nil) { GroupeSet.grChoix = 0 }
-        choixGroupe.selectRow(GroupeSet.grChoix!, inComponent: 0, animated: true)
 
         
         do{
-            //try self.actus = context.fetch(request)
             try self.messagesFetched.performFetch()
             
         }
@@ -151,10 +148,71 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     {
         let a = pickerData[row] as String
         GroupeSet.groupeChoisi = self.groupe.groupeCorrespondant(name: a)
-        GroupeSet.grChoix = row
+        self.refreshMsg()
+        
+        
+    }
+    
+    func refreshMsg(){
+        let messagesUpdate : NSFetchedResultsController<Message> = {
+            let request : NSFetchRequest<Message> = Message.fetchRequest()
+            request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
+            request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
+            let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
+            fetchResultController.delegate = self
+            return fetchResultController
+        }()
+
+        self.messagesFetched = messagesUpdate
+        do{
+            try messagesFetched.performFetch()
+        }
+        
+        catch let error as NSError{
+            fatalError("failed to get messages\(error)")
+        }
         self.actuTable.reloadData()
-        
-        
+    }
+    
+    
+    // MARK: - NSFetchResultController delegate protocol
+    
+    /// Start the update of a fetch result
+    ///
+    /// - Parameter controller: fetchresultcontroller
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.actuTable.beginUpdates()
+    }
+    
+    /// End the update of a fetch result
+    ///
+    /// - Parameter controller: fetchresultcontroller
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.actuTable.endUpdates()
+        self.actuTable.reloadData()
+    }
+    
+    /// Control the update of the fetch result
+    ///
+    /// - Parameters:
+    ///   - controller: fetchresultcontroller
+    ///   - anObject: object type
+    ///   - indexPath: indexpath of the object
+    ///   - type: type of modification
+    ///   - newIndexPath: if indexpath change
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type{
+        case .delete:
+            if let indexPath = indexPath{
+                self.actuTable.deleteRows(at: [indexPath], with: .automatic)
+            }
+        case .insert:
+            if let newIndexPath = newIndexPath{
+                self.actuTable.insertRows(at: [newIndexPath], with: .fade)
+            }
+        default:
+            break
+        }
     }
     
 
