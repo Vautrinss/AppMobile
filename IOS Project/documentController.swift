@@ -74,7 +74,7 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle==UITableViewCellEditingStyle.delete){
             self.docTable.beginUpdates()
-            self.deleteUser(messageWithIndex: indexPath)
+            self.deleteDoc(messageWithIndex: indexPath)
             self.docTable.endUpdates()
         }
     }
@@ -113,8 +113,8 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
     
         // MARK : Méthodes Base de données
     
-        // Supprime l'utilisateur donné en paramètre de la base de données
-    func deleteUser(messageWithIndex indexPath: IndexPath){
+        // Supprime le document donné en paramètre de la base de données
+    func deleteDoc(messageWithIndex indexPath: IndexPath){
         let doc = self.docsFetched.object(at: indexPath)
         if DocumentSet.deleteDocument(doc: doc) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible de supprimer ce document", andMessage: "")}
      
