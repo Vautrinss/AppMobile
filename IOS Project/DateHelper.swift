@@ -40,7 +40,7 @@ class DateHelper {
         let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm"
             dateFormatter.locale = NSLocale(localeIdentifier: "FR") as Locale!
-            let dateString = dateFormatter.string(from: date as Date)
+            let dateString = dateFormatter.string(from: d as Date)
             return dateString
     
     }
