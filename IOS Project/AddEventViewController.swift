@@ -76,11 +76,11 @@ class AddEventViewController: UIViewController {
         }
         let context = appDelegate.persistentContainer.viewContext
         
-        let evt = Calendrier(context: context)
+        let evt = Evenement(context: context)
         evt.nomC = nomEvt.text
         evt.dateC = dateEvt
         evt.appartenir = Session.userConnected
-        evt.CoreDataManager.save()
+        EvenementSet.addEvenement(evenement: evt)
     }
     
     func addDate() {
