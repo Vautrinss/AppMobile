@@ -36,6 +36,8 @@
 		F852A45C1E86C0D800CF771D /* CellViewEventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F852A45B1E86C0D800CF771D /* CellViewEventList.swift */; };
 		F878A4DB1E86868700CB4DBB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F878A4DA1E86868700CB4DBB /* AddEventViewController.swift */; };
 		F878A4DD1E86A0FD00CB4DBB /* EvenementSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F878A4DC1E86A0FD00CB4DBB /* EvenementSet.swift */; };
+		F8AA6B1E1E86D49E009831C2 /* addDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA6B1C1E86D49E009831C2 /* addDocument.swift */; };
+		F8AA6B1F1E86D49E009831C2 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA6B1D1E86D49E009831C2 /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,8 @@
 		F852A45B1E86C0D800CF771D /* CellViewEventList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewEventList.swift; sourceTree = "<group>"; };
 		F878A4DA1E86868700CB4DBB /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		F878A4DC1E86A0FD00CB4DBB /* EvenementSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvenementSet.swift; sourceTree = "<group>"; };
+		F8AA6B1C1E86D49E009831C2 /* addDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addDocument.swift; sourceTree = "<group>"; };
+		F8AA6B1D1E86D49E009831C2 /* DateHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DateHelper.swift; path = "IOS Project/DateHelper.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,12 +153,12 @@
 				A35747FD1E841BF500E75C20 /* documentController.swift */,
 				A3B7E29E1E82873E000E999C /* addMessController.swift */,
 				A3B7E29C1E82788D000E999C /* addUserController.swift */,
+				F8AA6B1C1E86D49E009831C2 /* addDocument.swift */,
 				3A53C9791E51B5170039A34E /* ViewController.swift */,
 				A3A28D2E1E7957E900F25847 /* ProfilController.swift */,
 				3A53C9811E51B5170039A34E /* Assets.xcassets */,
 				3A53C9831E51B5170039A34E /* LaunchScreen.storyboard */,
 				A38E876F1E829048000FF599 /* Main.storyboard */,
-				B50D58311E86BBBB001B983B /* addDocument.swift */,
 				3A53C9771E51B5170039A34E /* AppDelegate.swift */,
 				A35748031E8434E800E75C20 /* cellViewDocList.swift */,
 				A35748011E84249E00E75C20 /* cellViewUserList.swift */,
@@ -188,7 +192,7 @@
 		3A7EFECF1E6836DC00400A31 /* Class Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				B50D58331E86BC9F001B983B /* Date.swift */,
+				F8AA6B1D1E86D49E009831C2 /* DateHelper.swift */,
 				A310972C1E7025A1003A789A /* Session.swift */,
 				3A7EFECB1E68349F00400A31 /* CoreDataManager.swift */,
 				3A7EFECD1E6836D400400A31 /* DialogBoxHelper.swift */,
@@ -357,16 +361,17 @@
 				A35748061E84399200E75C20 /* DocumentSet.swift in Sources */,
 				F852A45A1E86BD1F00CF771D /* EventViewController.swift in Sources */,
 				3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */,
+				F8AA6B1F1E86D49E009831C2 /* DateHelper.swift in Sources */,
 				F852A45C1E86C0D800CF771D /* CellViewEventList.swift in Sources */,
 				A35747FE1E841BF500E75C20 /* documentController.swift in Sources */,
 				A3F4A3941E7003C200C7D447 /* MessageSet.swift in Sources */,
 				3A53C9781E51B5170039A34E /* AppDelegate.swift in Sources */,
+				F8AA6B1E1E86D49E009831C2 /* addDocument.swift in Sources */,
 				A3F4A3901E7001A100C7D447 /* PersonneSet.swift in Sources */,
 				A35748041E8434E800E75C20 /* cellViewDocList.swift in Sources */,
 				A3B7E29D1E82788D000E999C /* addUserController.swift in Sources */,
 				A310972D1E7025A1003A789A /* Session.swift in Sources */,
 				3A7EFECE1E6836D400400A31 /* DialogBoxHelper.swift in Sources */,
-				B50D58341E86BC9F001B983B /* Date.swift in Sources */,
 				F878A4DD1E86A0FD00CB4DBB /* EvenementSet.swift in Sources */,
 				A3F4A3921E7002DA00C7D447 /* Personne.swift in Sources */,
 				3A53C9801E51B5170039A34E /* IOS_Project.xcdatamodeld in Sources */,

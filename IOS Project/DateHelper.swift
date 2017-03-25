@@ -7,10 +7,12 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
-class Date {
+class DateHelper {
     
-    static class func currentDate() -> Date{
+     static func currentDate() -> Date{
         let date = NSDate()
         let calendar = NSCalendar.current
         let dateNeeded = calendar.dateComponents([.year, .month,.day], from: date as Date)
@@ -19,12 +21,13 @@ class Date {
         let day = String(format:"%02d",dateNeeded.day!)
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
+        
         let result = formatter.date(from :day+"-"+month+"-"+year)
         return result!
     
     }
 
-    static class func currentDateString() -> String{
+    static func currentDateString() -> String{
         let date = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm"
@@ -33,12 +36,12 @@ class Date {
     
     }
 
-        class func convertNSDateToString(d : NSDate) -> String{
-        let date = d
+    static func convertNSDateToString(d : NSDate) -> String{
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm"
-        let dateString = dateFormatter.string(from: date as Date)
-        return dateString
+            dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm"
+            dateFormatter.locale = NSLocale(localeIdentifier: "FR") as Locale!
+            let dateString = dateFormatter.string(from: date as Date)
+            return dateString
     
     }
     
