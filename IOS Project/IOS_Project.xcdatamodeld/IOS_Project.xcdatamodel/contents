@@ -8,6 +8,11 @@
         <relationship name="auteurDoc" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personne" inverseName="deposer" inverseEntity="Personne" syncable="YES"/>
         <relationship name="comporterMC" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MotCle" inverseName="apparaitre" inverseEntity="MotCle" syncable="YES"/>
     </entity>
+    <entity name="Evenement" representedClassName="Evenement" syncable="YES" codeGenerationType="class">
+        <attribute name="dateE" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="nomE" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="auteurEvt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personne" inverseName="creerEvt" inverseEntity="Personne" syncable="YES"/>
+    </entity>
     <entity name="Groupe" representedClassName="Groupe" syncable="YES" codeGenerationType="class">
         <attribute name="nomGroupe" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="acceder" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="adresser" inverseEntity="Message" syncable="YES"/>
@@ -33,6 +38,7 @@
         <attribute name="prenomP" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="statutP" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <relationship name="appartenir" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Groupe" inverseName="composer" inverseEntity="Groupe" syncable="YES"/>
+        <relationship name="creerEvt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Evenement" inverseName="auteurEvt" inverseEntity="Evenement" syncable="YES"/>
         <relationship name="deposer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Document" inverseName="auteurDoc" inverseEntity="Document" syncable="YES"/>
         <relationship name="poster" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="auteurMess" inverseEntity="Message" syncable="YES"/>
     </entity>
@@ -47,7 +53,8 @@
         <element name="Groupe" positionX="-288" positionY="-432" width="128" height="88"/>
         <element name="Message" positionX="9" positionY="-423" width="128" height="148"/>
         <element name="MotCle" positionX="-567" positionY="-330" width="128" height="73"/>
-        <element name="Personne" positionX="-306" positionY="-261" width="128" height="163"/>
+        <element name="Personne" positionX="-306" positionY="-261" width="128" height="178"/>
         <element name="PJ" positionX="259" positionY="-441" width="128" height="103"/>
+        <element name="Evenement" positionX="-299" positionY="-1" width="128" height="88"/>
     </elements>
 </model>
