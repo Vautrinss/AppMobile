@@ -109,6 +109,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         message.objetM = objet
         message.contenuM = contenu
+        message.dateM = currentDate()
         message.adresser = g.groupeCorrespondant(name: groupeChoisi)
         message.auteurMess = Session.userConnected
         
