@@ -4,6 +4,8 @@ import CoreData
 
 class documentController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
     
+    // MARK : Variables de documentController
+    
     @IBOutlet weak var docTable: UITableView!
 
     
@@ -18,6 +20,9 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         return fetchResultController
     }()
     
+    // MARK : Méthodes de documentController
+    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -43,7 +48,7 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // MARK : Méthodes tableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.docTable.dequeueReusableCell(withIdentifier: "docCell", for: indexPath)
@@ -83,6 +88,8 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         return appDelegate.persistentContainer.viewContext
     }
     
+        // MARK : Méthodes alert
+    
     func alert(WithTitle title: String, andMessage msg: String = "") {
         let alert = UIAlertController(title: title,
                                       message: msg,
@@ -104,7 +111,9 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         present(alert, animated: true)
     }
     
+        // MARK : Méthodes Base de données
     
+        // Supprime l'utilisateur donné en paramètre de la base de données
     func deleteUser(messageWithIndex indexPath: IndexPath){
         let doc = self.docsFetched.object(at: indexPath)
         if DocumentSet.deleteDocument(doc: doc) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible de supprimer ce document", andMessage: "")}
