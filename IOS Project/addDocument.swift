@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import UIKit
 
-class addDocument : UIViewController{
+class addDocument: UIViewController {
     
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,21 +24,21 @@ class addDocument : UIViewController{
      func addDocument(nomDoc nom: String, urlDoc url: String) {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
         {
-            alertError(errorMsg: "Impossible de poster un document", userInfo: "Impossible de poster un document")
+            /*alert(errorMsg: "Impossible de poster un document", userInfo: "Impossible de poster un document")*/
             return
         }
         let context = appDelegate.persistentContainer.viewContext
         
         let document = Document(context: context)
         
-        document.nomDoc = objet
-        document.urlDoc = contenu
-        document.dateDoc = Date.curentDate()
+        document.nomDoc = nom
+        document.urlDoc = url
+        document.dateDoc = DateHelper.currentDate() as NSDate?
         document.auteurDoc = Session.userConnected
         
         
         
-        if MessageSet.addDocument(doc: document) {alertError(errorMsg: "Document envoyé", userInfo: "")} else {alertError(errorMsg: "Impossible d'ajouter un document", userInfo: "")}
+        if DocumentSet.addDocument(doc: document) {/*alertError(errorMsg: "Document envoyé", userInfo: "")} else {alertError(errorMsg: "Impossible d'ajouter un document", userInfo: "")*/}
         
         
     }

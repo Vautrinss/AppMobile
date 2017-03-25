@@ -67,7 +67,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         let cell = self.tableEvents.dequeueReusableCell(withIdentifier: "evtCell", for: indexPath)
             as! CellViewEventList
         let evt = self.eventsFetched.object(at: indexPath)
-        cell.dateEvent.text = Date.convertNSDateToString(evt.dateE)
+        cell.dateEvent.text = DateHelper.convertDateToString(d: evt.dateE as! Date)
         cell.nomEvent.text = evt.nomE
         return cell
     }
