@@ -54,36 +54,7 @@ class AddEventViewController: UIViewController {
     
     
     @IBAction func btnAjouter(_ sender: Any) {
-        // instance EventStore
-        let eventStore = EKEventStore();
-        
-        // eventStore pour creer une instance calendrier
-        /* A continuer si on a le temps pour ajouter au calendrier Apple
-        if let calendarForEvent = eventStore.calendar(withIdentifier: self.calendar.calendarIdentifier)
-        {
-            
-            // Calendrier Apple
-            let newEvt = EKEvent(eventStore: eventStore)
-            
-            newEvt.calendar = calendarForEvent
-            // Voir a quoi sert cette ligne
-            newEvt.title = self.nomEvt.text ?? "nom Evennement"
-            newEvt.startDate = self.dateEvt.date
-            
-            // Pour sauvegarder dans le calendrier apple
-            do {
-                try eventStore.save(newEvt, span: .thisEvent, commit: true)
-                
-                self.dismiss(animated: true, completion: nil)
-            } catch {
-                let alert = UIAlertController(title: "Impossible de sauvegarder l'evenement", message: (error as NSError).localizedDescription, preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(OKAction)
-                
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-        */
+
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
         {
             return
@@ -95,7 +66,7 @@ class AddEventViewController: UIViewController {
         evt.dateE = dateEvt.date as NSDate?
         evt.auteurEvt = Session.userConnected
         if EvenementSet.addEvenement(evenement: evt){
-            alertError(errorEvt: "Evenement ajoute", userInfo: "yes")}
+            self.dismiss(animated: true, completion: nil)}
         else {alertError(errorEvt: "Impossible d'ajouter l'evenement", userInfo: "no")}
     }
     

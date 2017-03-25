@@ -14,7 +14,7 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     
     
 
-     @IBOutlet weak var lastName: UITextField!
+    @IBOutlet weak var lastName: UITextField!
     
     @IBOutlet weak var firstName: UITextField!
 

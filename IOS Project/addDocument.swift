@@ -11,6 +11,8 @@ import UIKit
 
 class addDocument: UIViewController {
     
+    @IBOutlet weak var nomDoc: UITextField!
+    @IBOutlet weak var urlDoc: UITextField!
 	override func viewDidLoad() {
         super.viewDidLoad()
         }
@@ -43,11 +45,23 @@ class addDocument: UIViewController {
         
     }
     
-    /*
-     if (self.nomDoc.text != "") && (self.urlDoc.text != "") {
-            self.addDocument(nom : self.nomDoc.text, url: self.urlDoc.text!)
-        
-            //self.performSegue(withIdentifier: "home", sender: self)
+    
+
+    
+    @IBAction func cancelBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func addBtn(_ sender: Any) {
+        if (self.nomDoc.text != "") && (self.urlDoc.text != "") {
+            self.addDocument(nomDoc : self.nomDoc.text!, urlDoc: self.urlDoc.text!)
+            
+            self.dismiss(animated: true, completion: nil)
+            
+
         }
-        */
+        
+    }
+    
+    
 }
