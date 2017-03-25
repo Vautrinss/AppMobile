@@ -9,8 +9,13 @@
 import UIKit
 
 class ActuViewCellTableViewCell: UITableViewCell {
-    @IBOutlet weak var ObjetActu: UILabel!
-    @IBOutlet weak var ContenuActu: UILabel!
+    
+    @IBOutlet weak var auteurActu: UILabel!
+    @IBOutlet weak var objetActu: UILabel!
+    
+    @IBOutlet weak var contenuActu: UILabel!
+    
+    @IBOutlet weak var dateActu: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

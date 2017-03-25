@@ -88,15 +88,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="54" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TqI-Wd-gs5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="106" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TqI-Wd-gs5">
                                 <rect key="frame" x="16" y="121" width="288" height="388"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="actuCell" rowHeight="54" id="IqH-cd-jKa" customClass="ActuViewCellTableViewCell" customModule="IOS_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="288" height="54"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="actuCell" rowHeight="106" id="IqH-cd-jKa" customClass="ActuViewCellTableViewCell" customModule="IOS_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="288" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IqH-cd-jKa" id="X9J-vb-jdb">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="53.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auteur" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxx-AJ-RaF">
@@ -109,8 +109,22 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Objet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHp-jC-M6r">
-                                                    <rect key="frame" x="8" y="29" width="272" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <rect key="frame" x="8" y="29" width="272" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contenu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5h-GJ-JSL">
+                                                    <rect key="frame" x="8" y="55" width="79" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLG-oX-LZM">
+                                                    <rect key="frame" x="90" y="0.0" width="90" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -124,8 +138,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="ContenuActu" destination="hHp-jC-M6r" id="Kq4-k1-3B8"/>
-                                            <outlet property="ObjetActu" destination="gxx-AJ-RaF" id="gQc-Bh-tdE"/>
+                                            <outlet property="auteurActu" destination="gxx-AJ-RaF" id="QZH-s2-gkR"/>
+                                            <outlet property="contenuActu" destination="v5h-GJ-JSL" id="dMc-zD-1eo"/>
+                                            <outlet property="dateActu" destination="vLG-oX-LZM" id="hsi-FB-7yA"/>
+                                            <outlet property="objetActu" destination="hHp-jC-M6r" id="XPk-Rq-JJ4"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -181,7 +197,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fno-KE-wIw" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2119" y="-731"/>
+            <point key="canvasLocation" x="2118.75" y="-732.04225352112678"/>
         </scene>
         <!--Calendrier-->
         <scene sceneID="JI8-I9-SXm">

@@ -90,9 +90,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         if (self.newMessage.text != "") && (self.newMessageObjet.text != "") {
             if self.groupeChoisi == "" {self.groupeChoisi = pickerData[groupe.selectedRow(inComponent: 0)]}
             self.addActu(contenuActu: self.newMessage.text, objetActu: self.newMessageObjet.text!)
-        
-            self.performSegue(withIdentifier: "home", sender: self)
-        }
+                }
     }
     
     
@@ -115,7 +113,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
         
         
-        if MessageSet.addMessage(message: message) {alertError(errorMsg: "Message envoyé", userInfo: "")} else {alertError(errorMsg: "Impossible d'ajouter une actualité", userInfo: "")}
+        if MessageSet.addMessage(message: message) {self.dismiss(animated: true, completion: nil)} else {alertError(errorMsg: "Impossible d'ajouter une actualité", userInfo: "")}
         
         
     }

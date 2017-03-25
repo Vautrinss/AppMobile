@@ -14,6 +14,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     @IBOutlet weak var choixGroupe: UIPickerView!
     
+    
+    
     var pickerData: [String] = []
     var groupe: GroupeSet = GroupeSet()
     
@@ -69,8 +71,10 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
             as! ActuViewCellTableViewCell
         let message = self.messagesFetched.object(at: indexPath)
-        cell.ObjetActu.text = message.auteurMess?.nomP
-        cell.ContenuActu.text = message.objetM
+        cell.auteurActu.text = message.auteurMess?.nomP
+        cell.objetActu.text = message.objetM
+        cell.contenuActu.text = message.contenuM
+        cell.dateActu.text = DateHelper.convertDateToString(d: message.dateM as! Date)
         return cell
     }
     
