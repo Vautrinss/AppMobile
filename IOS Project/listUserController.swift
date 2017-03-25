@@ -12,6 +12,9 @@ import CoreData
 
 class listUserController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate{
     
+    
+    
+    // MARK : Variables de listUserController
     @IBOutlet weak var userTable: UITableView!
     
     fileprivate lazy var usersFetched : NSFetchedResultsController<Personne> = {
@@ -24,6 +27,8 @@ class listUserController: UIViewController, UITableViewDataSource, UITableViewDe
         print("OK ICI2")
         return fetchResultController
     }()
+    
+    // MARK : Méthodes de listUserController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +55,7 @@ class listUserController: UIViewController, UITableViewDataSource, UITableViewDe
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // MARK : Méthode tableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.userTable.dequeueReusableCell(withIdentifier: "userCell", for: indexPath)
@@ -89,6 +94,8 @@ class listUserController: UIViewController, UITableViewDataSource, UITableViewDe
         return appDelegate.persistentContainer.viewContext
     }
     
+    // MARK : Méthode alert
+    
     func alert(WithTitle title: String, andMessage msg: String = "") {
         let alert = UIAlertController(title: title,
                                       message: msg,
@@ -110,6 +117,7 @@ class listUserController: UIViewController, UITableViewDataSource, UITableViewDe
         present(alert, animated: true)
     }
 
+    //MARK : Méthode Base de données
     
     func deleteUser(messageWithIndex indexPath: IndexPath){
         let user = self.usersFetched.object(at: indexPath)
