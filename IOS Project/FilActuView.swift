@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 
 class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
+   
+   // MARK : Variable de FilActuView
+   
    @IBOutlet weak var actuTable: UITableView!
 
     @IBOutlet weak var choixGroupe: UIPickerView!
@@ -28,7 +31,10 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         fetchResultController.delegate = self
         return fetchResultController
     }()
-    
+   
+   // MARK : Méthode de FilActuView
+   
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -115,7 +121,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
 
     
-    
+    // ouvre un alertBox affichant les informations données en paramètre
     func alertError(errorMsg error : String, userInfo user: String = "")
     {
         let alert = UIAlertController(title: error, message: user, preferredStyle: .alert)
@@ -124,12 +130,14 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         present(alert, animated: true)
     }
     
+   // Supprime le message qui correspond à l'index donné en paramètre, qui correspond au message de la tableview
     func deleteActu(messageWithIndex indexPath: IndexPath){
             let message = self.messagesFetched.object(at: indexPath)
             if MessageSet.deleteMessage(message: message) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible d'ajouter une actualité", andMessage: "")}
             
         }
     
+   // retourne le nombre d'élément du picker view
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -144,6 +152,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         return pickerData[row]
     }
     
+   // Lorsque qu'une action est effectuée sur le pickerData, cette méthode est executé et la tableview est remis à jour
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         let a = pickerData[row] as String
@@ -153,6 +162,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
     }
     
+   // refreshMsg : Remet à jour les données du TableView qui affcihe les messages
     func refreshMsg(){
         let messagesUpdate : NSFetchedResultsController<Message> = {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
