@@ -154,6 +154,7 @@
 				3A53C9811E51B5170039A34E /* Assets.xcassets */,
 				3A53C9831E51B5170039A34E /* LaunchScreen.storyboard */,
 				A38E876F1E829048000FF599 /* Main.storyboard */,
+				B50D58311E86BBBB001B983B /* addDocument.swift */,
 				3A53C9771E51B5170039A34E /* AppDelegate.swift */,
 				A35748031E8434E800E75C20 /* cellViewDocList.swift */,
 				A35748011E84249E00E75C20 /* cellViewUserList.swift */,
@@ -187,6 +188,7 @@
 		3A7EFECF1E6836DC00400A31 /* Class Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				B50D58331E86BC9F001B983B /* Date.swift */,
 				A310972C1E7025A1003A789A /* Session.swift */,
 				3A7EFECB1E68349F00400A31 /* CoreDataManager.swift */,
 				3A7EFECD1E6836D400400A31 /* DialogBoxHelper.swift */,
@@ -364,6 +366,7 @@
 				A3B7E29D1E82788D000E999C /* addUserController.swift in Sources */,
 				A310972D1E7025A1003A789A /* Session.swift in Sources */,
 				3A7EFECE1E6836D400400A31 /* DialogBoxHelper.swift in Sources */,
+				B50D58341E86BC9F001B983B /* Date.swift in Sources */,
 				F878A4DD1E86A0FD00CB4DBB /* EvenementSet.swift in Sources */,
 				A3F4A3921E7002DA00C7D447 /* Personne.swift in Sources */,
 				3A53C9801E51B5170039A34E /* IOS_Project.xcdatamodeld in Sources */,
