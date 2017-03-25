@@ -11,9 +11,14 @@ import CoreData
 
 class ViewController: UIViewController {
     
+    // MARK : Variables de ViewController
+    
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var pwd: UITextField!
     
+    // MARK : Méthodes de ViewController
+   
+    // Méthode appelé lors du clic sur le bouton connexion
     @IBAction func connexion(_ sender: Any) {
         if (self.username.text != "") && (self.pwd.text != "") {
             Session.login(login: self.username.text!, passwd: self.pwd.text!)
@@ -35,6 +40,8 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK : Méthodes alert
     
        func alertError(errorMsg error : String, userInfo user: String = "")
     {
