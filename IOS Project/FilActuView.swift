@@ -71,7 +71,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // MARK : Méthodes tableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
@@ -112,6 +112,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             }
             return appDelegate.persistentContainer.viewContext
         }
+   
+   // MARK : Méthodes alert
     
     func alert(WithTitle title: String, andMessage msg: String = "") {
         let alert = UIAlertController(title: title,
@@ -134,12 +136,16 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         present(alert, animated: true)
     }
     
+   // MARK : Méthodes Base de données
+   
    // Supprime le message qui correspond à l'index donné en paramètre, qui correspond au message de la tableview
     func deleteActu(messageWithIndex indexPath: IndexPath){
             let message = self.messagesFetched.object(at: indexPath)
             if MessageSet.deleteMessage(message: message) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible d'ajouter une actualité", andMessage: "")}
             
         }
+   
+   // MARK : Méthodes PickerView
     
    // retourne le nombre d'élément du picker view
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -165,6 +171,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
         
     }
+   
+   // MARK : Méthodes autres
     
    // refreshMsg : Remet à jour les données du TableView qui affcihe les messages
     func refreshMsg(){
@@ -191,29 +199,15 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     // MARK: - NSFetchResultController delegate protocol
     
-    /// Start the update of a fetch result
-    ///
-    /// - Parameter controller: fetchresultcontroller
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.actuTable.beginUpdates()
     }
     
-    /// End the update of a fetch result
-    ///
-    /// - Parameter controller: fetchresultcontroller
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         self.actuTable.endUpdates()
         self.actuTable.reloadData()
     }
     
-    /// Control the update of the fetch result
-    ///
-    /// - Parameters:
-    ///   - controller: fetchresultcontroller
-    ///   - anObject: object type
-    ///   - indexPath: indexpath of the object
-    ///   - type: type of modification
-    ///   - newIndexPath: if indexpath change
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type{
         case .delete:
