@@ -26,7 +26,7 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     
     @IBOutlet weak var promoInput: UITextField!
     
-    
+    //
     var pickerData: [String] = []
     var choixStatut: String = ""
     
