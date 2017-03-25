@@ -11,6 +11,7 @@ import CoreData
 
 class DocumentSet {
     
+    // MARK : Variables de DocumentSet
     
     var documentList : [Document]{
         get{
@@ -26,13 +27,10 @@ class DocumentSet {
         }
     }
     
-    /// <#Description#>
-    ///
-    /// - Parameter message: <#message description#>
-    /// - Returns: <#return value description#>
+
     
     
-    
+    /// addDocument : sauvegarde dans la base de données le document donné en paramètre   
     static func addDocument(doc: Document) -> Bool{
         if CoreDataManager.save() == nil { // pas d'erreur
             return true
@@ -40,6 +38,7 @@ class DocumentSet {
         return false
     }
     
+    /// deleteDocument : supprime dans la base de données le document donné en paramètre
     static func deleteDocument(doc: Document) -> Bool{
         
         CoreDataManager.context.delete(doc)

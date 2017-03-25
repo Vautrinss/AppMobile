@@ -12,6 +12,8 @@ import CoreData
 
 class DateHelper {
     
+    // MARK: Variables de DateHelper
+    
      static func currentDate() -> Date{
         let date = NSDate()
         let calendar = NSCalendar.current
@@ -26,6 +28,10 @@ class DateHelper {
         return result!
     
     }
+    
+    // MARK: Méthode de DateHelper
+    
+    // currentDateString : renvoie la date actuel sous un format texte
 
     static func currentDateString() -> String{
         let date = NSDate()
@@ -36,6 +42,8 @@ class DateHelper {
     
     }
 
+     // convertNSDateToString : converti le paramètre récupéré (type NSDate) et renvoi son équivalent en String
+    
     static func convertNSDateToString(d : NSDate) -> String{
         let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd' 'HH:mm"
@@ -44,6 +52,8 @@ class DateHelper {
             return dateString
     
     }
+    
+    // convertDateToString : converti le paramètre récupéré (type Date) et renvoi son équivalent en String
     
     static func convertDateToString(d : Date) -> String{
         let dateFormatter = DateFormatter()
