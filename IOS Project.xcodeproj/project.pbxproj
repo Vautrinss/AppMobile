@@ -32,8 +32,8 @@
 		A3F4A3901E7001A100C7D447 /* PersonneSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4A38F1E7001A100C7D447 /* PersonneSet.swift */; };
 		A3F4A3921E7002DA00C7D447 /* Personne.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4A3911E7002DA00C7D447 /* Personne.swift */; };
 		A3F4A3941E7003C200C7D447 /* MessageSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F4A3931E7003C200C7D447 /* MessageSet.swift */; };
-		B50D58321E86BBBB001B983B /* addDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D58311E86BBBB001B983B /* addDocument.swift */; };
-		B50D58341E86BC9F001B983B /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50D58331E86BC9F001B983B /* Date.swift */; };
+		F852A45A1E86BD1F00CF771D /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F852A4591E86BD1F00CF771D /* EventViewController.swift */; };
+		F852A45C1E86C0D800CF771D /* CellViewEventList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F852A45B1E86C0D800CF771D /* CellViewEventList.swift */; };
 		F878A4DB1E86868700CB4DBB /* AddEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F878A4DA1E86868700CB4DBB /* AddEventViewController.swift */; };
 		F878A4DD1E86A0FD00CB4DBB /* EvenementSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F878A4DC1E86A0FD00CB4DBB /* EvenementSet.swift */; };
 /* End PBXBuildFile section */
@@ -87,8 +87,8 @@
 		A3F4A38F1E7001A100C7D447 /* PersonneSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonneSet.swift; sourceTree = "<group>"; };
 		A3F4A3911E7002DA00C7D447 /* Personne.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Personne.swift; path = Assets.xcassets/Personne.swift; sourceTree = "<group>"; };
 		A3F4A3931E7003C200C7D447 /* MessageSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSet.swift; sourceTree = "<group>"; };
-		B50D58311E86BBBB001B983B /* addDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = addDocument.swift; sourceTree = "<group>"; };
-		B50D58331E86BC9F001B983B /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Date.swift; path = "IOS Project/Date.swift"; sourceTree = "<group>"; };
+		F852A4591E86BD1F00CF771D /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		F852A45B1E86C0D800CF771D /* CellViewEventList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellViewEventList.swift; sourceTree = "<group>"; };
 		F878A4DA1E86868700CB4DBB /* AddEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEventViewController.swift; sourceTree = "<group>"; };
 		F878A4DC1E86A0FD00CB4DBB /* EvenementSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EvenementSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +144,7 @@
 			children = (
 				A3F4A38E1E70014E00C7D447 /* Model */,
 				3A89E4111E530CCB00E91F94 /* FilActuView.swift */,
+				F852A4591E86BD1F00CF771D /* EventViewController.swift */,
 				A35747FF1E84233400E75C20 /* listUserController.swift */,
 				A35747FD1E841BF500E75C20 /* documentController.swift */,
 				A3B7E29E1E82873E000E999C /* addMessController.swift */,
@@ -158,6 +159,7 @@
 				A35748031E8434E800E75C20 /* cellViewDocList.swift */,
 				A35748011E84249E00E75C20 /* cellViewUserList.swift */,
 				3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */,
+				F852A45B1E86C0D800CF771D /* CellViewEventList.swift */,
 				3A53C9861E51B5170039A34E /* Info.plist */,
 				3A53C97E1E51B5170039A34E /* IOS_Project.xcdatamodeld */,
 				F878A4DA1E86868700CB4DBB /* AddEventViewController.swift */,
@@ -353,8 +355,9 @@
 				3A89E4121E530CCB00E91F94 /* FilActuView.swift in Sources */,
 				3A53C97A1E51B5170039A34E /* ViewController.swift in Sources */,
 				A35748061E84399200E75C20 /* DocumentSet.swift in Sources */,
+				F852A45A1E86BD1F00CF771D /* EventViewController.swift in Sources */,
 				3AC005A11E51D96D00B62538 /* ActuViewCellTableViewCell.swift in Sources */,
-				B50D58321E86BBBB001B983B /* addDocument.swift in Sources */,
+				F852A45C1E86C0D800CF771D /* CellViewEventList.swift in Sources */,
 				A35747FE1E841BF500E75C20 /* documentController.swift in Sources */,
 				A3F4A3941E7003C200C7D447 /* MessageSet.swift in Sources */,
 				3A53C9781E51B5170039A34E /* AppDelegate.swift in Sources */,
