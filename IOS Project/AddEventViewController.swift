@@ -24,7 +24,7 @@ class AddEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.dateEvt.setDate(initialDatePickerValue(), animated: false)
+        //self.dateEvt.setDate(initialDatePickerValue(), animated: false)
     }
     
     func initialDatePickerValue() -> Date {
@@ -44,12 +44,21 @@ class AddEventViewController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
+    func alertError(errorEvt error : String, userInfo user: String = "")
+    {
+        let alert = UIAlertController(title: error, message: user, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
+    }
+    
     
     @IBAction func btnAjouter(_ sender: Any) {
         // instance EventStore
         let eventStore = EKEventStore();
         
         // eventStore pour creer une instance calendrier
+        /* A continuer si on a le temps pour ajouter au calendrier Apple
         if let calendarForEvent = eventStore.calendar(withIdentifier: self.calendar.calendarIdentifier)
         {
             
@@ -74,18 +83,22 @@ class AddEventViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
             }
         }
+        */
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else
+        {
+            return
+        }
         let context = appDelegate.persistentContainer.viewContext
         
         let evt = Evenement(context: context)
-        evt.nomC = nomEvt.text
-        evt.dateC = dateEvt
-        evt.appartenir = Session.userConnected
-        EvenementSet.addEvenement(evenement: evt)
+        evt.nomE = nomEvt.text
+        evt.dateE = dateEvt.date as NSDate?
+        evt.auteurEvt = Session.userConnected
+        if EvenementSet.addEvenement(evenement: evt){
+            alertError(errorEvt: "Evenement ajoute", userInfo: "yes")}
+        else {alertError(errorEvt: "Impossible d'ajouter l'evenement", userInfo: "no")}
     }
     
-    func addDate() {
-        
-    }
     
     
 }
