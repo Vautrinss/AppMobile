@@ -24,7 +24,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     fileprivate lazy var eventsFetched : NSFetchedResultsController<Evenement> = {
         let request : NSFetchRequest<Evenement> = Evenement.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Evenement.dateE), ascending:true)]
-        request.predicate = NSPredicate(format: "dateE >= %@", DateHelper.currentDate())
+        request.predicate = NSPredicate(format: "(dateE >= %@) && (adresser = %@)", DateHelper.currentDate(), groupe.groupeCorrespondant(name: "Tous"))
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
         fetchResultController.delegate = self
         return fetchResultController
@@ -119,7 +119,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         let evtsUpdate : NSFetchedResultsController<Evenement> = {
             let request : NSFetchRequest<Evenement> = Evenement.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Evenement.dateE), ascending:true)]
-            request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
+            request.predicate = NSPredicate(format: "(dateE >= %@) && (adresser = %@)", DateHelper.currentDate(), GroupeSet.groupeChoisi!)
             let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
             fetchResultController.delegate = self
             return fetchResultController
