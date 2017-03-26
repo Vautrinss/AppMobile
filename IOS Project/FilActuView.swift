@@ -28,7 +28,12 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
         let request : NSFetchRequest<Message> = Message.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
-        request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
+        if searchBar.text.length != 0 {
+         request.predicate = NSPredicate(format: "((objetM contains [cd] %@) || (contenuM contains[cd] %@)) && (adresser == %@)", searchBar.text!, searchBar.text!, GroupeSet.groupeChoisi!)
+         }
+       else {
+         request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
+       }
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
         fetchResultController.delegate = self
         return fetchResultController
@@ -71,7 +76,25 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK : Méthodes tableView
+   // MARK: - Méthodes searchBar
+   
+   // called when text changes (including clear)
+internal func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    fetchedResultsController.performFetch()
+    tableView.reloadData()
+}
+
+// called when cancel button pressed
+internal func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    searchBar.text = ""
+    fetchedResultsController.fetchRequest.predicate = nil
+    fetchedResultsController.performFetch()
+    tableView.reloadData()
+}
+   
+   
+    // MARK: - Méthodes tableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
@@ -118,7 +141,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             return appDelegate.persistentContainer.viewContext
         }
    
-   // MARK : Méthodes alert
+   // MARK: - Méthodes alert
     
     func alert(WithTitle title: String, andMessage msg: String = "") {
         let alert = UIAlertController(title: title,
@@ -150,7 +173,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
             
         }
    
-   // MARK : Méthodes PickerView
+   // MARK: - Méthodes PickerView
     
    // retourne le nombre d'élément du picker view
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -177,7 +200,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         
     }
    
-   // MARK : Méthodes autres
+   // MARK: - Méthodes autres
     
    // refreshMsg : Remet à jour les données du TableView qui affcihe les messages
     func refreshMsg(){
