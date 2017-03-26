@@ -30,7 +30,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
         let request : NSFetchRequest<Message> = Message.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
+        request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.dateM), ascending:false)]
          request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
         fetchResultController.delegate = self
@@ -134,6 +134,9 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         cell.objetActu.text = message.objetM
         cell.contenuActu.text = message.contenuM
         cell.dateActu.text = DateHelper.convertDateToString(d: message.dateM as! Date)
+        if message.image != nil {
+        cell.imageActu.image = UIImage(data: message.image as! Data)
+        }
         return cell
     }
     

@@ -96,18 +96,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="82" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TqI-Wd-gs5">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="107" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TqI-Wd-gs5">
                                 <rect key="frame" x="16" y="133" width="288" height="355"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="355" id="G3B-Aq-3op"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="actuCell" rowHeight="82" id="IqH-cd-jKa" customClass="ActuViewCellTableViewCell" customModule="IOS_Project" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="288" height="82"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="actuCell" rowHeight="107" id="IqH-cd-jKa" customClass="ActuViewCellTableViewCell" customModule="IOS_Project" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="288" height="107"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IqH-cd-jKa" id="X9J-vb-jdb">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="81"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="106"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auteur" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxx-AJ-RaF">
@@ -131,7 +131,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contenu" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5h-GJ-JSL">
-                                                    <rect key="frame" x="8" y="55" width="280" height="24"/>
+                                                    <rect key="frame" x="8" y="55" width="197" height="49.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -147,14 +147,22 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="W5p-4h-bzS">
+                                                    <rect key="frame" x="210" y="26" width="70" height="70"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="70" id="uBv-cU-ZQD"/>
+                                                        <constraint firstAttribute="height" constant="70" id="uWT-AQ-FAJ"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="vLG-oX-LZM" firstAttribute="top" secondItem="X9J-vb-jdb" secondAttribute="top" id="12T-6d-nU8"/>
                                                 <constraint firstItem="hHp-jC-M6r" firstAttribute="top" secondItem="vLG-oX-LZM" secondAttribute="bottom" constant="8" id="1nP-zO-ZZN"/>
                                                 <constraint firstItem="v5h-GJ-JSL" firstAttribute="top" secondItem="hHp-jC-M6r" secondAttribute="bottom" constant="6.5" id="2rO-vo-YdL"/>
                                                 <constraint firstItem="hHp-jC-M6r" firstAttribute="trailing" secondItem="X9J-vb-jdb" secondAttribute="trailingMargin" id="39A-Rh-THs"/>
-                                                <constraint firstAttribute="trailing" secondItem="v5h-GJ-JSL" secondAttribute="trailing" id="BSC-Tl-M9G"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="W5p-4h-bzS" secondAttribute="trailing" id="4rr-A0-gZV"/>
                                                 <constraint firstItem="gxx-AJ-RaF" firstAttribute="leading" secondItem="X9J-vb-jdb" secondAttribute="leading" constant="8" id="Hzn-J6-hNp"/>
+                                                <constraint firstItem="W5p-4h-bzS" firstAttribute="top" secondItem="vLG-oX-LZM" secondAttribute="bottom" constant="5" id="KYZ-wW-hLs"/>
                                                 <constraint firstItem="hHp-jC-M6r" firstAttribute="leading" secondItem="X9J-vb-jdb" secondAttribute="leadingMargin" id="UOp-al-E8F"/>
                                                 <constraint firstItem="gxx-AJ-RaF" firstAttribute="top" secondItem="X9J-vb-jdb" secondAttribute="top" id="Uro-g5-JTB"/>
                                                 <constraint firstItem="gxx-AJ-RaF" firstAttribute="top" secondItem="X9J-vb-jdb" secondAttribute="top" id="WTy-Xu-264"/>
@@ -164,6 +172,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="vLG-oX-LZM" secondAttribute="trailing" id="s3B-F8-cEF"/>
                                                 <constraint firstItem="hHp-jC-M6r" firstAttribute="top" secondItem="gxx-AJ-RaF" secondAttribute="bottom" constant="8" id="u03-B0-bh2"/>
                                                 <constraint firstItem="hHp-jC-M6r" firstAttribute="leading" secondItem="X9J-vb-jdb" secondAttribute="leadingMargin" id="wpo-eX-ha7"/>
+                                                <constraint firstItem="W5p-4h-bzS" firstAttribute="leading" secondItem="v5h-GJ-JSL" secondAttribute="trailing" constant="5" id="xsa-MT-EUF"/>
                                                 <constraint firstItem="gxx-AJ-RaF" firstAttribute="leading" secondItem="X9J-vb-jdb" secondAttribute="leading" constant="8" id="xxQ-fn-rPX"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -171,6 +180,7 @@
                                             <outlet property="auteurActu" destination="gxx-AJ-RaF" id="QZH-s2-gkR"/>
                                             <outlet property="contenuActu" destination="v5h-GJ-JSL" id="dMc-zD-1eo"/>
                                             <outlet property="dateActu" destination="vLG-oX-LZM" id="hsi-FB-7yA"/>
+                                            <outlet property="imageActu" destination="W5p-4h-bzS" id="xnd-Tb-qgH"/>
                                             <outlet property="objetActu" destination="hHp-jC-M6r" id="XPk-Rq-JJ4"/>
                                         </connections>
                                     </tableViewCell>
@@ -642,6 +652,17 @@
                                     <outlet property="delegate" destination="5Uu-xL-9ck" id="ona-9L-j5e"/>
                                 </connections>
                             </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vzu-aA-HQ0">
+                                <rect key="frame" x="60" y="360" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="fxh-a4-bLC"/>
+                                    <constraint firstAttribute="height" constant="30" id="nL1-3d-rrp"/>
+                                </constraints>
+                                <state key="normal" title="Ajouter une image"/>
+                                <connections>
+                                    <action selector="addImageMess:" destination="5Uu-xL-9ck" eventType="touchUpInside" id="gjq-0G-5Yz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -653,6 +674,7 @@
                             <constraint firstItem="gcb-Dz-jhH" firstAttribute="top" secondItem="vMC-y7-Svr" secondAttribute="bottom" constant="10" id="LQN-QO-7Vy"/>
                             <constraint firstItem="spc-ij-hJn" firstAttribute="top" secondItem="6Aw-0H-YPn" secondAttribute="bottom" constant="8" id="LVT-iG-fQi"/>
                             <constraint firstItem="fJE-gI-XiN" firstAttribute="centerX" secondItem="t1w-EO-ciG" secondAttribute="centerX" multiplier="1.5" id="NRX-xA-qsh"/>
+                            <constraint firstItem="Vzu-aA-HQ0" firstAttribute="centerX" secondItem="t1w-EO-ciG" secondAttribute="centerX" id="Qkz-fG-ZF8"/>
                             <constraint firstItem="6Aw-0H-YPn" firstAttribute="leading" secondItem="t1w-EO-ciG" secondAttribute="leadingMargin" id="Qsx-AV-BbS"/>
                             <constraint firstItem="LVe-9N-vE1" firstAttribute="leading" secondItem="t1w-EO-ciG" secondAttribute="leadingMargin" constant="73" id="SYq-WN-nEW"/>
                             <constraint firstItem="pWE-sR-0sQ" firstAttribute="leading" secondItem="t1w-EO-ciG" secondAttribute="leadingMargin" id="YRP-nf-dts"/>
@@ -660,6 +682,7 @@
                             <constraint firstItem="6Aw-0H-YPn" firstAttribute="trailing" secondItem="t1w-EO-ciG" secondAttribute="trailingMargin" id="dyp-am-Jgc"/>
                             <constraint firstItem="pWE-sR-0sQ" firstAttribute="top" secondItem="spc-ij-hJn" secondAttribute="bottom" constant="20" id="gAm-H3-UEh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pWE-sR-0sQ" secondAttribute="trailing" id="igF-dh-vMA"/>
+                            <constraint firstItem="Vzu-aA-HQ0" firstAttribute="top" secondItem="pWE-sR-0sQ" secondAttribute="bottom" constant="32" id="niy-79-Zl0"/>
                             <constraint firstItem="spc-ij-hJn" firstAttribute="trailing" secondItem="t1w-EO-ciG" secondAttribute="trailingMargin" id="vlx-5Y-6Rs"/>
                         </constraints>
                     </view>
@@ -788,6 +811,7 @@
                         <inset key="imageInsets" minX="7" minY="7" maxX="7" maxY="7"/>
                     </tabBarItem>
                     <connections>
+                        <outlet property="addBtn" destination="Kev-Ib-Cas" id="Hyd-Wc-dTL"/>
                         <outlet property="docTable" destination="ymN-7K-Nao" id="fDx-nc-IMV"/>
                     </connections>
                 </viewController>

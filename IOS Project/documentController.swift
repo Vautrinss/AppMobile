@@ -85,10 +85,13 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if (Session.userConnected?.statutP)! < 3
+        {
         if(editingStyle==UITableViewCellEditingStyle.delete){
             self.docTable.beginUpdates()
             self.deleteDoc(messageWithIndex: indexPath)
             self.docTable.endUpdates()
+        }
         }
     }
     

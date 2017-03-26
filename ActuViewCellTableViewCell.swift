@@ -16,6 +16,7 @@ class ActuViewCellTableViewCell: UITableViewCell {
     @IBOutlet weak var contenuActu: UILabel!
     
     @IBOutlet weak var dateActu: UILabel!
+    @IBOutlet weak var imageActu: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -23,6 +23,7 @@
         <attribute name="contenuM" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateM" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="idM" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="objetM" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="adresser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Groupe" inverseName="acceder" inverseEntity="Groupe" syncable="YES"/>
         <relationship name="auteurMess" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personne" inverseName="poster" inverseEntity="Personne" syncable="YES"/>
@@ -53,7 +54,7 @@
         <element name="Document" positionX="-567" positionY="-198" width="128" height="118"/>
         <element name="Evenement" positionX="-299" positionY="-1" width="128" height="103"/>
         <element name="Groupe" positionX="-288" positionY="-432" width="128" height="103"/>
-        <element name="Message" positionX="9" positionY="-423" width="128" height="148"/>
+        <element name="Message" positionX="9" positionY="-423" width="128" height="165"/>
         <element name="MotCle" positionX="-567" positionY="-330" width="128" height="73"/>
         <element name="Personne" positionX="-306" positionY="-261" width="128" height="178"/>
         <element name="PJ" positionX="259" positionY="-441" width="128" height="103"/>

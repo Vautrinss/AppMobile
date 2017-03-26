@@ -20,6 +20,8 @@ class addDocument: UIViewController {
 	// MARK : Methodes de addDocument
 	override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         }
 
 

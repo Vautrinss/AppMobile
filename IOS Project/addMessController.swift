@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate{
    
     //MARK: Variables de addMessController
     
@@ -22,6 +22,10 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var pickerData: [String] = []
     var g: GroupeSet = GroupeSet()
     var groupeChoisi: String = ""
+    var sentImage : UIImage? = nil
+    var imageMess : NSData?
+    
+    let picker = UIImagePickerController()
     
     //MARK: Méthodes de addMessController
     
@@ -70,6 +74,27 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     }
     
     
+    
+    
+    //MARK: - Image delegates
+    
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        if let chosenImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.sentImage = chosenImage
+            let image = sentImage
+            let imageData = UIImageJPEGRepresentation(image!, 1)! as NSData
+            self.imageMess = imageData
+        }
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
     //MARK: Autres méthodes
     
     func alertError(errorMsg error : String, userInfo user: String = "")
@@ -87,6 +112,12 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         
     }
 
+    @IBAction func addImageMess(_ sender: Any) {
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.mediaTypes = UIImagePickerController.availableMediaTypes(for: .photoLibrary)!
+        present(picker, animated: true, completion: nil)
+    }
    
     @IBAction func send(_ sender: Any) {
         
@@ -114,7 +145,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         message.dateM = DateHelper.currentDate() as NSDate?
         message.adresser = g.groupeCorrespondant(name: groupeChoisi)
         message.auteurMess = Session.userConnected
-        
+        message.image = imageMess
         
         
         if MessageSet.addMessage(message: message) {self.dismiss(animated: true, completion: nil)} else {alertError(errorMsg: "Impossible d'ajouter une actualité", userInfo: "")}
