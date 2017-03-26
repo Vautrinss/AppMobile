@@ -32,7 +32,7 @@ class ProfilController: UIViewController {
         }
         
         nomProfil.text = Session.userConnected?.nomP
-        nomProfil.text = Session.userConnected?.prenomP
+        prenomProfil.text = Session.userConnected?.prenomP
         
     }
     
