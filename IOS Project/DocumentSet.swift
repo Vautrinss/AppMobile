@@ -11,7 +11,7 @@ import CoreData
 
 class DocumentSet {
     
-    // MARK : Variables de DocumentSet
+    // MARK: Variables de DocumentSet
     
     var documentList : [Document]{
         get{
@@ -28,7 +28,7 @@ class DocumentSet {
     }
     
 
-    
+    // MARK: Methodes de DocumentSet
     
     /// addDocument : sauvegarde dans la base de données le document donné en paramètre   
     static func addDocument(doc: Document) -> Bool{

@@ -12,6 +12,7 @@ import CoreData
 
 class EventViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
 
+    //MARK: Variables de EventViewController
 
     
     @IBOutlet weak var tableEvents: UITableView!
@@ -30,6 +31,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         fetchResultController.delegate = self
         return fetchResultController
     }()
+    
+    //MARK: Methodes de EventViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +67,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
+    //MARK: Méthodes tableView
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.tableEvents.dequeueReusableCell(withIdentifier: "evtCell", for: indexPath)
             as! CellViewEventList
@@ -84,18 +89,13 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         return true
     }
     
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if(editingStyle==UITableViewCellEditingStyle.delete){
-            self.tableEvents.beginUpdates()
-            //self.deleteActu(messageWithIndex: indexPath)
-            self.tableEvents.endUpdates()
-        }
-    }
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
+    
+    //MARK: Méthodes pickerView
     
     // The number of rows of data
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -115,6 +115,8 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         
     }
+    
+    //MARK: Autre Méthodes
     
     func refreshEvt(){
         let evtsUpdate : NSFetchedResultsController<Evenement> = {

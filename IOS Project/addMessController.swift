@@ -11,6 +11,8 @@ import CoreData
 
 class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
    
+    //MARK: Variables de addMessController
+    
     @IBOutlet weak var newMessageObjet: UITextField!
     
     @IBOutlet weak var newMessage: UITextView!
@@ -21,7 +23,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
     var g: GroupeSet = GroupeSet()
     var groupeChoisi: String = ""
     
-    
+    //MARK: Méthodes de addMessController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +47,7 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         // Dispose of any resources that can be recreated.
     }
     
-    
+    //MARK: Méthodes pickerView
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -67,6 +69,8 @@ class addMessController: UIViewController, UIPickerViewDelegate, UIPickerViewDat
 
     }
     
+    
+    //MARK: Autres méthodes
     
     func alertError(errorMsg error : String, userInfo user: String = "")
     {

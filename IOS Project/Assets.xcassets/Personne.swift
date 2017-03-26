@@ -10,10 +10,8 @@ import Foundation
 import CoreData
 
 extension Personne {
-// Ici methode pour crypter password
-// Methode verification password (renvoi un bol)
     
-    
+    //MARK: Méthode de Personne
     
     static func newPersonne(prenom: String, nom: String, passwd: String, statut: Int16) -> Personne{
         

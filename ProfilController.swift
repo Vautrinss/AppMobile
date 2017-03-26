@@ -12,11 +12,16 @@ import CoreData
 
 class ProfilController: UIViewController {
     
+    
+    //MARK: Variables de ProfilController
+    
     @IBOutlet weak var addUser: UIButton!
     
     @IBOutlet weak var nomProfil: UILabel!
 
     @IBOutlet weak var prenomProfil: UILabel!
+    
+    //MARK: Méthodes de ProfilController
     
     override func viewDidLoad() {
         super.viewDidLoad()

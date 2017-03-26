@@ -12,6 +12,8 @@ import CoreData
 class PersonneSet {
     
     
+    //MARK: Variables de PersonneSet
+    
     var personneList : [Personne]{
         get{
             var ret : [Personne]
@@ -26,10 +28,7 @@ class PersonneSet {
         }
     }
     
-    /// <#Description#>
-    ///
-    /// - Parameter message: <#message description#>
-    /// - Returns: <#return value description#>
+    //MARK: Méthodes de PersonneSet
     
     
     static func addPersonne(personne: Personne) -> Bool{

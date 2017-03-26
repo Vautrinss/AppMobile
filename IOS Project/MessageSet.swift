@@ -12,6 +12,8 @@ import CoreData
 class MessageSet {
     
     
+    //MARK: Varaibles de MessageSet
+    
     var messageList : [Message]{
         get{
             var ret : [Message]
@@ -25,13 +27,11 @@ class MessageSet {
             return ret
         }
     }
-    
-    /// <#Description#>
-    ///
-    /// - Parameter message: <#message description#>
-    /// - Returns: <#return value description#>
-    
+
     static var selectMess: Message?
+    
+    
+    //MARK: Méthodes de MessageSet
     
     static func addMessage(message: Message) -> Bool{
         if CoreDataManager.save() == nil { // pas d'erreur

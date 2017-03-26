@@ -13,6 +13,8 @@ import CoreData
 class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDelegate {
     
     
+    
+    //MARK: Variables de addUserController
 
     @IBOutlet weak var lastName: UITextField!
     
@@ -30,6 +32,9 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     var pickerData: [String] = []
     var choixStatut: String = ""
     
+    
+    //MARK: Méthodes de addUserController
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -46,6 +51,8 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     }
     
     
+    
+    //MARK: méthodes pickerView
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -80,7 +87,7 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
 
     
     
-    
+    //MARK: Autres méthodes
     
     
     func alertError(errorMsg error : String, userInfo user: String = "")

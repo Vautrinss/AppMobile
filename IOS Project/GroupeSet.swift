@@ -11,7 +11,7 @@ import CoreData
 
 class GroupeSet {
     
-    
+    //MARK: Variable de GroupeSet
     
     static var groupeChoisi : Groupe?
     static var grChoix : Int?
@@ -34,13 +34,10 @@ class GroupeSet {
         }
     }
     
-    /// <#Description#>
-    ///
-    /// - Parameter message: <#message description#>
-    /// - Returns: <#return value description#>
+
     
     
-    
+    //MARK: Méthodes de GroupeSet
     
     func newGroupe(nom: String) -> Groupe{
         
@@ -72,7 +69,7 @@ class GroupeSet {
     }
     
     
-    
+    //Retourne la liste de groupe de l'utilisateur passé en paramètre
     func listGroupe(personne: Personne) -> [Groupe]? {
         let a = personne.appartenir
         return a?.allObjects as! [Groupe]?
@@ -95,7 +92,8 @@ class GroupeSet {
         }
         return ret
     }
-
+    
+    //Retroune une liste de groupe (String) à partir des groupes donnée en paramètre
     func listGroupsNames(list: [Groupe]) -> [String]{
         
         var ret : [String] = []
@@ -118,6 +116,7 @@ class GroupeSet {
         return false
     }
     
+    //Retourne l'instance de groupe qui correspond au nom du groupe passé en paramètre, si ce groupe n'existe pas, il est créé dans la base de données
     func groupeCorrespondant(name: String) -> Groupe? {
         var groupes : [Groupe]
         let request : NSFetchRequest<Groupe> = Groupe.fetchRequest()

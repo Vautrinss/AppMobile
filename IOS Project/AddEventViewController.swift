@@ -13,6 +13,8 @@ import CoreData
 
 
 class AddEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
+    
+    //MARK: Variables de AddEventViewController
 
     var calendar: EKCalendar!
     
@@ -26,7 +28,7 @@ class AddEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
     var groupeChoisi: String = ""
 
     
-    //var delegate: EventAddedDelegate?
+    //MARK: Méthodes de AddEventViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,7 @@ class AddEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         self.groupe.dataSource = self
     }
     
-    
+    //MARK: Méthodes pickerView
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -66,6 +68,7 @@ class AddEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         
     }
     
+    //MARK: méthodes Date pickerView
     
     
     func initialDatePickerValue() -> Date {
@@ -80,6 +83,7 @@ class AddEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         return Calendar.current.date(from: dateComponents)!
     }
     
+    //MARK: Autres méthodes
     
     @IBAction func btnRetour(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

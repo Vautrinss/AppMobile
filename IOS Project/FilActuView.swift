@@ -76,21 +76,46 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
    // MARK: - Méthodes searchBar
+    
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        searchActive = true;
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchActive = false;
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        searchT = searchBar.text!
+        refreshMsg()
+    }
+    
+
+    
    
    // called when text changes (including clear)
- func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+ /*internal func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
     print("yepa")
     searchActive = true
-            searchT = searchText
+            searchT = searchBar.text!
             self.refreshMsg()
     
 }
 
 // called when cancel button pressed
- func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+ internal func searchBarCancelButtonClicked(searchBar: UISearchBar) {
     searchActive = false
     self.refreshMsg()
-}
+}*/
    
    
     // MARK: - Méthodes tableView
@@ -209,7 +234,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
    // refreshMsg : Remet à jour les données du TableView qui affcihe les messages
     func refreshMsg(){
-              print(searchBar.text)
+              print("REFRESH LEO --")
         let messagesUpdate : NSFetchedResultsController<Message> = {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
