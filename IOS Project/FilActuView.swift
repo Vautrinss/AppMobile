@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource{
+class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UISearchBarDelegate{
    
    // MARK : Variable de FilActuView
    
@@ -18,6 +18,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     @IBOutlet weak var choixGroupe: UIPickerView!
     
     
+    @IBOutlet weak var searchBar: UISearchBar!
     
     var pickerData: [String] = []
     var groupe: GroupeSet = GroupeSet()
@@ -28,8 +29,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
         let request : NSFetchRequest<Message> = Message.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
-        if searchBar.text.length != 0 {
-         request.predicate = NSPredicate(format: "((objetM contains [cd] %@) || (contenuM contains[cd] %@)) && (adresser == %@)", searchBar.text!, searchBar.text!, GroupeSet.groupeChoisi!)
+        if (SearchBarHelper.activeSearch == true) {
+         request.predicate = NSPredicate(format: "((objetM contains [cd] %@) || (contenuM contains[cd] %@)) && (adresser == %@)", SearchBarHelper.recherche, SearchBarHelper.recherche, GroupeSet.groupeChoisi!)
          }
        else {
          request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
@@ -46,7 +47,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-
+        SearchBarHelper.activeSearch = false
+        SearchBarHelper.recherche = ""
         
         do{
             try self.messagesFetched.performFetch()
@@ -68,6 +70,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         // Connect data:
         self.choixGroupe.delegate = self
         self.choixGroupe.dataSource = self
+        self.searchBar.delegate = self
         
     }
     
@@ -77,20 +80,26 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
    // MARK: - Méthodes searchBar
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        SearchBarHelper.activeSearch = true
+        refreshMsg()
+    }
    
    // called when text changes (including clear)
-internal func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-    fetchedResultsController.performFetch()
-    tableView.reloadData()
+ func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        SearchBarHelper.recherche = searchBar.text!
+    if searchBar.text == ""
+    {SearchBarHelper.activeSearch = false}
+    else{
+        SearchBarHelper.activeSearch = true}
+    self.refreshMsg()
 }
 
 // called when cancel button pressed
-internal func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
-    searchBar.text = ""
-    fetchedResultsController.fetchRequest.predicate = nil
-    fetchedResultsController.performFetch()
-    tableView.reloadData()
+ func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    SearchBarHelper.activeSearch = false
+    self.refreshMsg()
 }
    
    
@@ -207,7 +216,13 @@ internal func searchBarCancelButtonClicked(searchBar: UISearchBar) {
         let messagesUpdate : NSFetchedResultsController<Message> = {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
-            request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
+            if (SearchBarHelper.activeSearch == true) {
+                request.predicate = NSPredicate(format: "((objetM contains [cd] %@) || (contenuM contains[cd] %@)) && (adresser == %@)", SearchBarHelper.recherche, SearchBarHelper.recherche, GroupeSet.groupeChoisi!)
+            }
+            else {
+                request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
+            }
+
             let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
             fetchResultController.delegate = self
             return fetchResultController
