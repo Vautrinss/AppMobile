@@ -20,11 +20,24 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         return fetchResultController
     }()
     
+    @IBOutlet weak var addBtn: UIButton!
     // MARK : Méthodes de documentController
     
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if (Session.userConnected?.statutP)! < 3
+        {
+            self.addBtn.isEnabled = true
+            self.addBtn.isHidden = false
+        }
+        else{
+            self.addBtn.isHidden = true
+            self.addBtn.isEnabled = false
+        }
+
+        
         // Do any additional setup after loading the view, typically from a nib.
         do{
             //try self.actus = context.fetch(request)
