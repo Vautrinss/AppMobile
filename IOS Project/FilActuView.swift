@@ -96,6 +96,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     // MARK: - Méthodes tableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         MessageSet.selectMess = self.messagesFetched.object(at: indexPath)
+        self.performSegue(withIdentifier: "segueMess", sender: self)
 
     }
     

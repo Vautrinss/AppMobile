@@ -99,7 +99,7 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
         let mdp = p1 + "." + p2
         let pwd = mdp.sha1()
         let request : NSFetchRequest<Personne> = Personne.fetchRequest()
-        let predicate : NSPredicate = NSPredicate(format: "nomP = %@", firstName)
+        let predicate : NSPredicate = NSPredicate(format: "(nomP = %@) && (prenomP = %@)", p2, p1)
         request.predicate = predicate
         do{
             personnes = try CoreDataManager.context.fetch(request)
@@ -109,7 +109,7 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
         }
         if personnes.count == 0{
             let leo = Personne.newPersonne(prenom: p1, nom: p2, passwd: pwd, statut: s)
-            leo.loginP = pwd
+            leo.loginP = mdp
             if PersonneSet.addPersonne(personne: leo) {
                 leo.addGroupe(promo: promotion)
                 alertError(errorMsg: "Utilisteur créé", userInfo: "")
@@ -120,6 +120,7 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
         }
         else{
             print("leo is living")
+            alertError(errorMsg: "Impossible cet utilisateur existe deja", userInfo: "")
         }
         
     }

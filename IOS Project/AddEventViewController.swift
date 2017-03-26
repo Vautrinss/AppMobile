@@ -101,7 +101,7 @@ class AddEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
             return
         }
         let context = appDelegate.persistentContainer.viewContext
-        
+        if(nomEvt.text != "") {
         let evt = Evenement(context: context)
         evt.nomE = nomEvt.text
         evt.dateE = dateEvt.date as NSDate?
@@ -114,6 +114,7 @@ class AddEventViewController: UIViewController, UIPickerViewDelegate, UIPickerVi
         if EvenementSet.addEvenement(evenement: evt){
             self.dismiss(animated: true, completion: nil)}
         else {alertError(errorEvt: "Impossible d'ajouter l'evenement", userInfo: "no")}
+        }
     }
     
     

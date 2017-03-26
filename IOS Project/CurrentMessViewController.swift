@@ -28,7 +28,10 @@ class CurrentMessViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        nomSel.text = MessageSet.selectMess?.auteurMess?.nomP
+        dateSel.text = DateHelper.convertDateToString(d: MessageSet.selectMess?.dateM as! Date)
+        objSel.text = MessageSet.selectMess?.objetM
+        contSel.text = MessageSet.selectMess?.contenuM
         
     }
 }

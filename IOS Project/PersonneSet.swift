@@ -78,13 +78,14 @@ class PersonneSet {
         var users : [Personne]
         let request : NSFetchRequest<Personne> = Personne.fetchRequest()
         request.predicate = NSPredicate(format: "loginP == %@", "admin")
+        let mdp = "admin"
         do{
             users = try CoreDataManager.context.fetch(request)
             if (users.count == 0){
                 let personne = Personne(context: CoreDataManager.context)
                 personne.nomP = "Admin"
                 personne.prenomP = "Admin"
-                personne.password = "admin"
+                personne.password = mdp.sha1()
                 personne.statutP = 1
                 personne.loginP = "admin"
                 self.addPersonne(personne: personne)
