@@ -17,6 +17,10 @@ class listUserController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK : Variables de listUserController
     @IBOutlet weak var userTable: UITableView!
     
+    @IBAction func cancelBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     fileprivate lazy var usersFetched : NSFetchedResultsController<Personne> = {
         let request : NSFetchRequest<Personne> = Personne.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Personne.loginP), ascending:true)]

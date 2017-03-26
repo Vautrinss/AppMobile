@@ -741,12 +741,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2NZ-3e-9DZ">
-                                <rect key="frame" x="16" y="20" width="288" height="491"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2NZ-3e-9DZ">
+                                <rect key="frame" x="16" y="79" width="288" height="432"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="491" id="419-16-4yE"/>
-                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userCell" id="aDk-ZZ-Wwm" customClass="cellViewUserList" customModule="IOS_Project" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="288" height="44"/>
@@ -781,10 +778,23 @@
                                     <outlet property="delegate" destination="cAE-YV-wyU" id="Bgc-d8-ZwJ"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E6f-pE-KCp">
+                                <rect key="frame" x="16" y="20" width="64" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="1er-cn-w20"/>
+                                    <constraint firstAttribute="height" constant="30" id="p5F-N3-Ysk"/>
+                                </constraints>
+                                <state key="normal" title="Retour"/>
+                                <connections>
+                                    <action selector="cancelBtn:" destination="cAE-YV-wyU" eventType="touchUpInside" id="wbS-At-fSY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ech-8b-Yy0" firstAttribute="top" secondItem="2NZ-3e-9DZ" secondAttribute="bottom" constant="8" id="9t9-b4-HDd"/>
+                            <constraint firstItem="E6f-pE-KCp" firstAttribute="leading" secondItem="kRo-du-5vr" secondAttribute="leadingMargin" id="JRb-vi-T2F"/>
+                            <constraint firstItem="E6f-pE-KCp" firstAttribute="top" secondItem="FNd-Af-H1J" secondAttribute="bottom" id="KZM-Ie-f0k"/>
                             <constraint firstItem="2NZ-3e-9DZ" firstAttribute="trailing" secondItem="kRo-du-5vr" secondAttribute="trailingMargin" id="QBb-6e-njQ"/>
                             <constraint firstItem="2NZ-3e-9DZ" firstAttribute="leading" secondItem="kRo-du-5vr" secondAttribute="leadingMargin" id="cXd-Q3-Kjf"/>
                         </constraints>
@@ -1068,6 +1078,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="78I-Ts-Ym4"/>
-        <segue reference="o16-cd-83B"/>
+        <segue reference="uVG-hK-754"/>
     </inferredMetricsTieBreakers>
 </document>
