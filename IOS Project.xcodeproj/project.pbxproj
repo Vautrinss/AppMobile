@@ -152,26 +152,17 @@
 			isa = PBXGroup;
 			children = (
 				A3F4A38E1E70014E00C7D447 /* Model */,
-				3A89E4111E530CCB00E91F94 /* FilActuView.swift */,
-				F852A4591E86BD1F00CF771D /* EventViewController.swift */,
-				A35747FF1E84233400E75C20 /* listUserController.swift */,
-				A35747FD1E841BF500E75C20 /* documentController.swift */,
-				A3B7E29E1E82873E000E999C /* addMessController.swift */,
-				A3B7E29C1E82788D000E999C /* addUserController.swift */,
-				F8AA6B1C1E86D49E009831C2 /* addDocument.swift */,
-				3A53C9791E51B5170039A34E /* ViewController.swift */,
-				A3A28D2E1E7957E900F25847 /* ProfilController.swift */,
+				F8CE75F71E882D8800B1AC34 /* Event */,
+				F8CE75F81E882D9700B1AC34 /* Document */,
+				F8CE75F51E882D3B00B1AC34 /* Message */,
+				F8CE75F61E882D6000B1AC34 /* User */,
 				3A53C9811E51B5170039A34E /* Assets.xcassets */,
 				3A53C9831E51B5170039A34E /* LaunchScreen.storyboard */,
 				A38E876F1E829048000FF599 /* Main.storyboard */,
+				3A53C9791E51B5170039A34E /* ViewController.swift */,
 				3A53C9771E51B5170039A34E /* AppDelegate.swift */,
-				A35748031E8434E800E75C20 /* cellViewDocList.swift */,
-				A35748011E84249E00E75C20 /* cellViewUserList.swift */,
-				3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */,
-				F852A45B1E86C0D800CF771D /* CellViewEventList.swift */,
 				3A53C9861E51B5170039A34E /* Info.plist */,
 				3A53C97E1E51B5170039A34E /* IOS_Project.xcdatamodeld */,
-				F878A4DA1E86868700CB4DBB /* AddEventViewController.swift */,
 			);
 			path = "IOS Project";
 			sourceTree = "<group>";
@@ -219,6 +210,47 @@
 				F8CE75F01E881CB700B1AC34 /* IOS Project-Bridging-Header.h */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		F8CE75F51E882D3B00B1AC34 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */,
+				3A89E4111E530CCB00E91F94 /* FilActuView.swift */,
+				A3B7E29E1E82873E000E999C /* addMessController.swift */,
+			);
+			name = Message;
+			sourceTree = "<group>";
+		};
+		F8CE75F61E882D6000B1AC34 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				A3A28D2E1E7957E900F25847 /* ProfilController.swift */,
+				A35747FF1E84233400E75C20 /* listUserController.swift */,
+				A3B7E29C1E82788D000E999C /* addUserController.swift */,
+				A35748011E84249E00E75C20 /* cellViewUserList.swift */,
+			);
+			name = User;
+			sourceTree = "<group>";
+		};
+		F8CE75F71E882D8800B1AC34 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				F852A4591E86BD1F00CF771D /* EventViewController.swift */,
+				F852A45B1E86C0D800CF771D /* CellViewEventList.swift */,
+				F878A4DA1E86868700CB4DBB /* AddEventViewController.swift */,
+			);
+			name = Event;
+			sourceTree = "<group>";
+		};
+		F8CE75F81E882D9700B1AC34 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				A35747FD1E841BF500E75C20 /* documentController.swift */,
+				F8AA6B1C1E86D49E009831C2 /* addDocument.swift */,
+				A35748031E8434E800E75C20 /* cellViewDocList.swift */,
+			);
+			name = Document;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -12,7 +12,7 @@ import EventKit
 import CoreData
 
 
-class AddEventViewController: UIViewController {
+class AddEventViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource{
 
     var calendar: EKCalendar!
     
@@ -20,12 +20,53 @@ class AddEventViewController: UIViewController {
     @IBOutlet weak var nomEvt: UITextField!
     @IBOutlet weak var dateEvt: UIDatePicker!
     
+    @IBOutlet weak var groupe: UIPickerView!
+    var pickerData: [String] = []
+    var g: GroupeSet = GroupeSet()
+    var groupeChoisi: String = ""
+
+    
     //var delegate: EventAddedDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.dateEvt.setDate(initialDatePickerValue(), animated: false)
+        
+        if Session.userConnected?.statutP == 1
+        {
+            self.pickerData = g.listGroupsNames(list: g.listGroupe()!)
+        }
+        else{
+            self.pickerData = g.listGroupsNames(list: g.listGroupe(personne: Session.userConnected!)!)
+        }
+        
+        // Connect data:
+        self.groupe.delegate = self
+        self.groupe.dataSource = self
     }
+    
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    // The number of rows of data
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    // The data to return for the row and component (column) that's being passed in
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+    {
+        self.groupeChoisi = pickerData[row] as String
+        
+    }
+    
+    
     
     func initialDatePickerValue() -> Date {
         let calendarUnitFlags: NSCalendar.Unit = [.year, .month, .day, .hour, .minute, .second]
@@ -65,6 +106,11 @@ class AddEventViewController: UIViewController {
         evt.nomE = nomEvt.text
         evt.dateE = dateEvt.date as NSDate?
         evt.auteurEvt = Session.userConnected
+        if self.groupeChoisi == "" {
+            evt.concerneG = g.groupeCorrespondant(name: pickerData[groupe.selectedRow(inComponent: 0)])}
+        else { evt.concerneG = g.groupeCorrespondant(name: groupeChoisi)}
+       
+        
         if EvenementSet.addEvenement(evenement: evt){
             self.dismiss(animated: true, completion: nil)}
         else {alertError(errorEvt: "Impossible d'ajouter l'evenement", userInfo: "no")}

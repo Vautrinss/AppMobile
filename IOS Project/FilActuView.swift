@@ -79,11 +79,11 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
    
    // called when text changes (including clear)
  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text != "" {
-            searchActive = true
+    print("yepa")
+    searchActive = true
             searchT = searchText
             self.refreshMsg()
-        }
+    
 }
 
 // called when cancel button pressed
@@ -203,7 +203,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
    // refreshMsg : Remet à jour les données du TableView qui affcihe les messages
     func refreshMsg(){
-        print("on est la %@", searchBar.text)
+        print("on est la")
+              print(searchBar.text)
         let messagesUpdate : NSFetchedResultsController<Message> = {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]

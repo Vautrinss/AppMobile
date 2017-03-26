@@ -79,7 +79,9 @@ class ProfilController: UIViewController {
                     return
                 }
                 
-                Session.userConnected?.modifyPwd(pwd: passToSave)
+                if(Session.userConnected?.modifyPwd(pwd: passToSave) == true){
+                    self.alertError(errorMsg: "Felicitation votre mot de passe est a jour")
+                }
             }
             
         }

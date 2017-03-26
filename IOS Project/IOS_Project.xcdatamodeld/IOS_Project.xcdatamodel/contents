@@ -11,11 +11,13 @@
         <attribute name="dateE" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="nomE" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="auteurEvt" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Personne" inverseName="creerEvt" inverseEntity="Personne" storedInTruthFile="YES" syncable="YES"/>
+        <relationship name="concerneG" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Groupe" inverseName="concerneEvt" inverseEntity="Groupe" syncable="YES"/>
     </entity>
     <entity name="Groupe" representedClassName="Groupe" syncable="YES" codeGenerationType="class">
         <attribute name="nomGroupe" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="acceder" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="adresser" inverseEntity="Message" syncable="YES"/>
         <relationship name="composer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Personne" inverseName="appartenir" inverseEntity="Personne" syncable="YES"/>
+        <relationship name="concerneEvt" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Evenement" inverseName="concerneG" inverseEntity="Evenement" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES" codeGenerationType="class">
         <attribute name="contenuM" optional="YES" attributeType="String" syncable="YES"/>
@@ -49,8 +51,8 @@
     </entity>
     <elements>
         <element name="Document" positionX="-567" positionY="-198" width="128" height="118"/>
-        <element name="Evenement" positionX="-299" positionY="-1" width="128" height="88"/>
-        <element name="Groupe" positionX="-288" positionY="-432" width="128" height="88"/>
+        <element name="Evenement" positionX="-299" positionY="-1" width="128" height="103"/>
+        <element name="Groupe" positionX="-288" positionY="-432" width="128" height="103"/>
         <element name="Message" positionX="9" positionY="-423" width="128" height="148"/>
         <element name="MotCle" positionX="-567" positionY="-330" width="128" height="73"/>
         <element name="Personne" positionX="-306" positionY="-261" width="128" height="178"/>

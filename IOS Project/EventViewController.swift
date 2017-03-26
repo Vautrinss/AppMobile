@@ -22,9 +22,10 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     var groupe: GroupeSet = GroupeSet()
     
     fileprivate lazy var eventsFetched : NSFetchedResultsController<Evenement> = {
+        let g: GroupeSet = GroupeSet()
         let request : NSFetchRequest<Evenement> = Evenement.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Evenement.dateE), ascending:true)]
-        request.predicate = NSPredicate(format: "(dateE >= %@) && (adresser = %@)", DateHelper.currentDate(), groupe.groupeCorrespondant(name: "Tous"))
+        request.predicate = NSPredicate(format: "(dateE >= %@) && (concerneG = %@)", DateHelper.currentDate() as CVarArg, g.groupeCorrespondant(name: "Tous")!)
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
         fetchResultController.delegate = self
         return fetchResultController
@@ -109,7 +110,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         let a = pickerData[row] as String
-        //GroupeSet.groupeChoisi = self.groupe.groupeCorrespondant(name: a)
+        GroupeSet.groupeChoisi = self.groupe.groupeCorrespondant(name: a)
         self.refreshEvt()
         
         
@@ -119,7 +120,7 @@ class EventViewController: UIViewController, UITableViewDataSource, UITableViewD
         let evtsUpdate : NSFetchedResultsController<Evenement> = {
             let request : NSFetchRequest<Evenement> = Evenement.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Evenement.dateE), ascending:true)]
-            request.predicate = NSPredicate(format: "(dateE >= %@) && (adresser = %@)", DateHelper.currentDate(), GroupeSet.groupeChoisi!)
+            request.predicate = NSPredicate(format: "(dateE >= %@) && (concerneG = %@)", DateHelper.currentDate() as CVarArg, GroupeSet.groupeChoisi!)
             let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
             fetchResultController.delegate = self
             return fetchResultController

@@ -77,7 +77,8 @@ extension Personne {
     }
     
     func modifyPwd(pwd: String) -> Bool{
-            self.setValue(pwd, forKey: "passwordP")
+        var mdp = pwd.sha1()
+            self.setValue(mdp, forKey: "passwordP")
             if CoreDataManager.save() == nil { // pas d'erreur
                 return true
             }

@@ -96,7 +96,8 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
     func addUser(firstName p1 : String, lastName p2 : String, promo promotion: String, statut s: Int16)
     {
         var personnes : [Personne]
-        let pwd = p1 + "." + p2
+        let mdp = p1 + "." + p2
+        let pwd = mdp.sha1()
         let request : NSFetchRequest<Personne> = Personne.fetchRequest()
         let predicate : NSPredicate = NSPredicate(format: "nomP = %@", firstName)
         request.predicate = predicate
