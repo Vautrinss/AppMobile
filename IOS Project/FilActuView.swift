@@ -94,6 +94,11 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
    
    
     // MARK: - Méthodes tableView
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        MessageSet.selectMess = self.messagesFetched.object(at: indexPath)
+
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.actuTable.dequeueReusableCell(withIdentifier: "actuCell", for: indexPath)
@@ -203,7 +208,6 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
    // refreshMsg : Remet à jour les données du TableView qui affcihe les messages
     func refreshMsg(){
-        print("on est la")
               print(searchBar.text)
         let messagesUpdate : NSFetchedResultsController<Message> = {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
@@ -242,6 +246,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         self.actuTable.endUpdates()
         self.actuTable.reloadData()
     }
+    
+
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         switch type{

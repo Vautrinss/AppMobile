@@ -40,6 +40,7 @@
 		F8AA6B1F1E86D49E009831C2 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AA6B1D1E86D49E009831C2 /* DateHelper.swift */; };
 		F8CE75E91E87FD4100B1AC34 /* SearchBarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE75E81E87FD4100B1AC34 /* SearchBarHelper.swift */; };
 		F8CE75EB1E88118D00B1AC34 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE75EA1E88118D00B1AC34 /* String.swift */; };
+		F8CE75FA1E88370700B1AC34 /* CurrentMessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8CE75F91E88370700B1AC34 /* CurrentMessViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		F8CE75E81E87FD4100B1AC34 /* SearchBarHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchBarHelper.swift; path = "IOS Project/SearchBarHelper.swift"; sourceTree = "<group>"; };
 		F8CE75EA1E88118D00B1AC34 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		F8CE75F01E881CB700B1AC34 /* IOS Project-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IOS Project-Bridging-Header.h"; sourceTree = "<group>"; };
+		F8CE75F91E88370700B1AC34 /* CurrentMessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentMessViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 				3AC005A01E51D96D00B62538 /* ActuViewCellTableViewCell.swift */,
 				3A89E4111E530CCB00E91F94 /* FilActuView.swift */,
 				A3B7E29E1E82873E000E999C /* addMessController.swift */,
+				F8CE75F91E88370700B1AC34 /* CurrentMessViewController.swift */,
 			);
 			name = Message;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				A3B7E29F1E82873E000E999C /* addMessController.swift in Sources */,
 				A35748001E84233400E75C20 /* listUserController.swift in Sources */,
 				F878A4DB1E86868700CB4DBB /* AddEventViewController.swift in Sources */,
+				F8CE75FA1E88370700B1AC34 /* CurrentMessViewController.swift in Sources */,
 				A3A28D2F1E7957E900F25847 /* ProfilController.swift in Sources */,
 				3A89E4121E530CCB00E91F94 /* FilActuView.swift in Sources */,
 				3A53C97A1E51B5170039A34E /* ViewController.swift in Sources */,
