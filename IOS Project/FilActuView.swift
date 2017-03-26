@@ -23,6 +23,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     var pickerData: [String] = []
     var groupe: GroupeSet = GroupeSet()
     var searchActive: Bool = Bool()
+    var searchT: String = String()
     
     
 
@@ -78,8 +79,9 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
    
    // called when text changes (including clear)
  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text.length != 0 {
+        if searchBar.text != "" {
             searchActive = true
+            searchT = searchText
             self.refreshMsg()
         }
 }
@@ -201,11 +203,12 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
    // refreshMsg : Remet à jour les données du TableView qui affcihe les messages
     func refreshMsg(){
+        print("on est la %@", searchBar.text)
         let messagesUpdate : NSFetchedResultsController<Message> = {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
             if (searchActive == true) {
-                request.predicate = NSPredicate(format: "((objetM contains [cd] %@) || (contenuM contains [cd] %@)) && (adresser == %@)", searchBar.text!, searchBar.text!, GroupeSet.groupeChoisi!)
+                request.predicate = NSPredicate(format: "(objetM contains [cd] %@) && (adresser == %@)", searchT, searchT, GroupeSet.groupeChoisi!)
             }
             else {
                 request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
