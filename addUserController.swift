@@ -107,9 +107,15 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
             fatalError("erreur executing fetchRequest : \(error)")
         }
         if personnes.count == 0{
-            let leo = Personne.newPersonne(prenom: p1, nom: p2, passwd: pwd, statut: s, promo: promotion)
+            let leo = Personne.newPersonne(prenom: p1, nom: p2, passwd: pwd, statut: s)
             leo.loginP = pwd
-            if PersonneSet.addPersonne(personne: leo) {alertError(errorMsg: "Utilisteur créé", userInfo: "")} else {alertError(errorMsg: "Impossible d'ajouter un utilisateur", userInfo: "")}
+            if PersonneSet.addPersonne(personne: leo) {
+                leo.addGroupe(promo: promotion)
+                alertError(errorMsg: "Utilisteur créé", userInfo: "")
+            }
+            else {alertError(errorMsg: "Impossible d'ajouter un utilisateur", userInfo: "")}
+            
+            
         }
         else{
             print("leo is living")
@@ -131,6 +137,12 @@ class addUserController: UIViewController,UIPickerViewDataSource,UIPickerViewDel
             }
         }
     }
+    
+    
+    @IBAction func cancelBtn(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
     
 }

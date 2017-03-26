@@ -97,11 +97,16 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if(editingStyle==UITableViewCellEditingStyle.delete){
-            self.actuTable.beginUpdates()
-            self.deleteActu(messageWithIndex: indexPath)
-            self.actuTable.endUpdates()
-    }
+        if((Session.userConnected?.statutP == 1) || (Session.userConnected?.statutP == 2)) {
+            if(editingStyle==UITableViewCellEditingStyle.delete){
+                self.actuTable.beginUpdates()
+                self.deleteActu(messageWithIndex: indexPath)
+                self.actuTable.endUpdates()
+            }
+        }
+        else {
+            alertError(errorMsg: "Vous n'avez pas les droits")
+        }
     }
     
     

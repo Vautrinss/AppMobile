@@ -14,7 +14,10 @@ class ProfilController: UIViewController {
     
     @IBOutlet weak var addUser: UIButton!
     
+    @IBOutlet weak var nomProfil: UILabel!
 
+    @IBOutlet weak var prenomProfil: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +30,9 @@ class ProfilController: UIViewController {
             self.addUser.isHidden = true
             self.addUser.isEnabled = false
         }
+        
+        nomProfil.text = Session.userConnected?.nomP
+        nomProfil.text = Session.userConnected?.prenomP
         
     }
     

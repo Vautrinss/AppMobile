@@ -33,6 +33,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        // Si pas d'admin(admin, admin) dans la BD alors on en cree un
+        PersonneSet.existAdmin()
          
     }
 

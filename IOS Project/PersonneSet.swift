@@ -74,6 +74,28 @@ class PersonneSet {
         }
     }
     
+    static func existAdmin(){
+        var users : [Personne]
+        let request : NSFetchRequest<Personne> = Personne.fetchRequest()
+        request.predicate = NSPredicate(format: "loginP == %@", "admin")
+        do{
+            users = try CoreDataManager.context.fetch(request)
+            if (users.count == 0){
+                let personne = Personne(context: CoreDataManager.context)
+                personne.nomP = "Admin"
+                personne.prenomP = "Admin"
+                personne.password = "admin"
+                personne.statutP = 1
+                personne.loginP = "admin"
+                self.addPersonne(personne: personne)
+            }
+        
+        }
+        catch let error as NSError{
+            print("erreur : \(error.userInfo["message"])")
+        }
+    }
+    
     
     static func deletePersonne(user: Personne) -> Bool{
         if(user.statutP != 1)
