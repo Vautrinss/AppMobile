@@ -22,6 +22,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     
     var pickerData: [String] = []
     var groupe: GroupeSet = GroupeSet()
+    var searchActive: Bool = Bool()
     
     
 
@@ -29,12 +30,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     fileprivate lazy var messagesFetched : NSFetchedResultsController<Message> = {
         let request : NSFetchRequest<Message> = Message.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
-        if (SearchBarHelper.activeSearch == true) {
-         request.predicate = NSPredicate(format: "((objetM contains [cd] %@) || (contenuM contains[cd] %@)) && (adresser == %@)", SearchBarHelper.recherche, SearchBarHelper.recherche, GroupeSet.groupeChoisi!)
-         }
-       else {
          request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
-       }
         let fetchResultController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataManager.context, sectionNameKeyPath:nil, cacheName:nil)
         fetchResultController.delegate = self
         return fetchResultController
@@ -47,8 +43,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        SearchBarHelper.activeSearch = false
-        SearchBarHelper.recherche = ""
+        searchActive = false
         
         do{
             try self.messagesFetched.performFetch()
@@ -80,25 +75,18 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
     
    // MARK: - Méthodes searchBar
-    
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        SearchBarHelper.activeSearch = true
-        refreshMsg()
-    }
    
    // called when text changes (including clear)
  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        SearchBarHelper.recherche = searchBar.text!
-    if searchBar.text == ""
-    {SearchBarHelper.activeSearch = false}
-    else{
-        SearchBarHelper.activeSearch = true}
-    self.refreshMsg()
+        if searchBar.text.length != 0 {
+            searchActive = true
+            self.refreshMsg()
+        }
 }
 
 // called when cancel button pressed
  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-    SearchBarHelper.activeSearch = false
+    searchActive = false
     self.refreshMsg()
 }
    
@@ -216,8 +204,8 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
         let messagesUpdate : NSFetchedResultsController<Message> = {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
             request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
-            if (SearchBarHelper.activeSearch == true) {
-                request.predicate = NSPredicate(format: "((objetM contains [cd] %@) || (contenuM contains[cd] %@)) && (adresser == %@)", SearchBarHelper.recherche, SearchBarHelper.recherche, GroupeSet.groupeChoisi!)
+            if (searchActive == true) {
+                request.predicate = NSPredicate(format: "((objetM contains [cd] %@) || (contenuM contains [cd] %@)) && (adresser == %@)", searchBar.text!, searchBar.text!, GroupeSet.groupeChoisi!)
             }
             else {
                 request.predicate = NSPredicate(format: "adresser == %@", GroupeSet.groupeChoisi!)
