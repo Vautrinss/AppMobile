@@ -240,7 +240,7 @@ class FilActuView: UIViewController, UITableViewDataSource, UITableViewDelegate,
               print("REFRESH LEO --")
         let messagesUpdate : NSFetchedResultsController<Message> = {
             let request : NSFetchRequest<Message> = Message.fetchRequest()
-            request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:true)]
+            request.sortDescriptors = [NSSortDescriptor(key:#keyPath(Message.objetM), ascending:false)]
             if (searchActive == true) {
                 request.predicate = NSPredicate(format: "(objetM contains [cd] %@) && (adresser == %@)", searchT, searchT, GroupeSet.groupeChoisi!)
             }

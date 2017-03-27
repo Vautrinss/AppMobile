@@ -69,7 +69,20 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         let doc = self.docsFetched.object(at: indexPath)
         cell.nomDoc.text = doc.nomDoc
         cell.auteurDoc.text = doc.auteurDoc?.nomP
+        
         return cell
+    }
+    
+    // click sur le document
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = self.docTable.dequeueReusableCell(withIdentifier: "docCell", for: indexPath)
+            as! cellViewDocList
+        let doc = self.docsFetched.object(at: indexPath)
+        cell.nomDoc.text = doc.nomDoc
+        cell.auteurDoc.text = doc.auteurDoc?.nomP
+        UIApplication.shared.open(URL(string: doc.urlDoc!)!, options: [:], completionHandler: nil)
+
+
     }
     
     
@@ -135,6 +148,46 @@ class documentController: UIViewController, UITableViewDataSource, UITableViewDe
         if DocumentSet.deleteDocument(doc: doc) {alert(WithTitle: "OK", andMessage: "")} else {alert(WithTitle: "Impossible de supprimer ce document", andMessage: "")}
      
     }
+    
+    // MARK: - NSFetchResultController delegate protocol
+    
+    /// Start the update of a fetch result
+    ///
+    /// - Parameter controller: fetchresultcontroller
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.docTable.beginUpdates()
+    }
+    
+    /// End the update of a fetch result
+    ///
+    /// - Parameter controller: fetchresultcontroller
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.docTable.endUpdates()
+        self.docTable.reloadData()
+    }
+    
+    /// Control the update of the fetch result
+    ///
+    /// - Parameters:
+    ///   - controller: fetchresultcontroller
+    ///   - anObject: object type
+    ///   - indexPath: indexpath of the object
+    ///   - type: type of modification
+    ///   - newIndexPath: if indexpath change
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        switch type{
+        case .delete:
+            if let indexPath = indexPath{
+                self.docTable.deleteRows(at: [indexPath], with: .automatic)
+            }
+        case .insert:
+            if let newIndexPath = newIndexPath{
+                self.docTable.insertRows(at: [newIndexPath], with: .fade)
+            }
+        default:
+            break
+        }
+    }
 
     
-    }
+}
